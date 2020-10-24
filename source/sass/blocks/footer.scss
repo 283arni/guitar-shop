@@ -1,0 +1,76 @@
+.footer {
+  background: $dark-gray;
+  min-height: 273px;
+  padding-top: 60px;
+  color: $white;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.footer__wrapper {
+  display: flex;
+}
+
+.footer__links {
+  flex: 2;
+}
+
+.footer__logo {
+  margin-bottom: 55px;
+}
+
+.footer__socials {
+
+  ul {
+    display: flex;
+  }
+
+  li:not(:last-of-type) {
+    margin-right: 20px;
+  }
+}
+
+.footer__info {
+  flex: 1;
+
+
+  h2 {
+    margin: 15px 0;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  p {
+    margin: 0 0 5px 0;
+    font-size: 10px;
+  }
+
+  a {
+    color: $white;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+
+    &[href^="tel"] {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+
+  li {
+    line-height: 50%;
+  }
+
+  li:not(:last-of-type) {
+    margin-bottom: 5px;
+  }
+
+  address {
+    font-style: normal;
+    font-size: 10px;
+  }
+}

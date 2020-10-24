@@ -4,6 +4,7 @@ html {
   font-weight: 400;
   color: $black;
   box-sizing: border-box;
+  height: 100vh;
 }
 
 *,
@@ -12,9 +13,17 @@ html {
   box-sizing: inherit;
 }
 
-a {
+a[href] {
   text-decoration: none;
   transition: 0.3s;
+
+  &:hover {
+    color: $crumbs;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 img {
