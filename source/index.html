@@ -2,12 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Интернет-магазин по продаже гитар любого вида Guitar shop">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Стартовый шаблон</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload stylesheet"  href="css/fonts.css" as="style">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>Guitar shop</title>
 </head>
 <body>
-  <h1>Добро пожаловать в Лигу А.</h1>
+  <header class="header">
+    <div class="container">
+      <a>
+        <svg width="67" height="70">
+          <use xlink:href="img/sprite_auto.svg#logo"></use>
+        </svg>
+      </a>
+      <nav class="header__nav">
+        <ul>
+          <li><a href="#">Каталог</a></li>
+          <li><a href="#">Где купить?</a></li>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Cервис-центры</a></li>
+        </ul>
+      </nav>
+      <div class="header__list">
+        <ul>
+          <li>
+            <a href="#">
+              <svg width="12" height="14">
+                <use xlink:href="img/sprite_auto.svg#location"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <svg width="14" height="14">
+                <use xlink:href="img/sprite_auto.svg#loupe"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <svg width="13" height="13">
+                <use xlink:href="img/sprite_auto.svg#basket"></use>
+              </svg>
+              <span>2</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
 </body>
 </html>

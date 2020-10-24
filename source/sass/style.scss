@@ -1,3 +1,5 @@
-h1 {
-  color: red;
-}
+//settings
+@import "./settings/normalize";
+@import "./settings/variables";
+@import "./settings/layout";
+
