@@ -1,6 +1,6 @@
 @font-face {
   font-family: "droidSans";
-  src: local("droidSans"),
+  src: local("Droid Sans"),
       url("../fonts/droid-sans-bold.woff2") format("woff2"),
       url("../fonts/droid-sans-bold.woff") format("woff");
   font-weight: 700;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "droidSans";
-  src: local("droidSans"),
+  src: local("Droid Sans"),
       url("../fonts/droid-sans.woff2") format("woff2"),
       url("../fonts/droid-sans.woff") format("woff");
   font-weight: 400;

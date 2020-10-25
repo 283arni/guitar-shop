@@ -52,6 +52,57 @@
       </div>
     </div>
   </header>
+  <main class="catalog">
+    <div class="container">
+      <h1>Каталог гитар</h1>
+      <div class="catalog__breadcrumbs">
+        <a href="#">Главная</a>
+        <svg width="16" height="16">
+          <use xlink:href="img/sprite_auto.svg#arrow"></use>
+        </svg>
+        <a href="#">Каталог</a>
+      </div>
+      <div class="catalog__wrapper">
+        <div class="filter">
+          <h2>Фильтр</h2>
+          <form>
+            <div class="filter__item">
+              <h2>Цена, &#8381;</h2>
+              <div class="filter__item-fields">
+                <input type="number" placeholder="1000">
+                <div></div>
+                <input type="number" placeholder="10000">
+              </div>
+            </div>
+            <div class="filter__item">
+              <h2>Тип гитар</h2>
+              <div class="filter__item-check">
+                <input type="checkbox" name="" id="acoustic-guitar">
+                <label for="acoustic-guitar">Акустические гитары</label>
+                <input type="checkbox" name="" id="electro-guitar">
+                <label for="electro-guitar">Электрогитары</label>
+                <input type="checkbox" name="" id="ukulele">
+                <label for="ukulele">Укулеле</label>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h2>Количество струн</h2>
+              <div class="filter__item-check">
+                <input type="checkbox" name="" id="strings-4">
+                <label for="strings-4">4</label>
+                <input type="checkbox" name="" id="strings-6">
+                <label for="strings-6">6</label>
+                <input type="checkbox" name="" id="strings-7">
+                <label for="strings-7">7</label>
+                <input type="checkbox" name="" id="strings-12">
+                <label for="strings-12">12</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
   <footer class="footer">
     <div class="footer__wrapper container">
       <div class="footer__links">
@@ -89,39 +140,41 @@
         </div>
       </div>
       <div class="footer__info">
-        <h2>О нас</h2>
-        <p>Магазин гитар, музыкальных инструментов и гитарная мастерская в Санкт-Петербурге.</p>
-        <p>Все инструменты проверены, отстроены и доведены до идеала!</p>
-      </div>
-      <div class="footer__info">
-        <h2>Каталог</h2>
-        <nav>
-          <ul>
-            <li><a href="#">Акустические гитары</a></li>
-            <li><a href="#">Классические гитары</a></li>
-            <li><a href="#">Электрогитары</a></li>
-            <li><a href="#">Бас-гитары</a></li>
-            <li><a href="#">Укулеле</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__info">
-        <h2>Информация</h2>
-        <nav>
-          <ul>
-            <li><a href="#">Где купить?</a></li>
-            <li><a href="#">Блог</a></li>
-            <li><a href="#">Вопрос - ответ</a></li>
-            <li><a href="#">Возврат</a></li>
-            <li><a href="#">Сервис-центры</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__info">
-        <h2>Контакты</h2>
-        <address>г. Санкт-Петербург, м. Невский проспект, ул. Казанская 6.</address>
-        <a href="tel:+78125005050">8-812-500-50-50</a>
-        <p>Режим работы: с <time>11:00</time> до <time>20:00</time>, без выходных.</p>
+        <div class="footer__item">
+          <h2>О нас</h2>
+          <p>Магазин гитар, музыкальных инструментов и гитарная мастерская в Санкт-Петербурге.</p>
+          <p>Все инструменты проверены, отстроены и доведены до идеала!</p>
+        </div>
+        <div class="footer__item">
+          <h2>Каталог</h2>
+          <nav>
+            <ul>
+              <li><a href="#">Акустические гитары</a></li>
+              <li><a href="#">Классические гитары</a></li>
+              <li><a href="#">Электрогитары</a></li>
+              <li><a href="#">Бас-гитары</a></li>
+              <li><a href="#">Укулеле</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer__item">
+          <h2>Информация</h2>
+          <nav>
+            <ul>
+              <li><a href="#">Где купить?</a></li>
+              <li><a href="#">Блог</a></li>
+              <li><a href="#">Вопрос - ответ</a></li>
+              <li><a href="#">Возврат</a></li>
+              <li><a href="#">Сервис-центры</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer__item">
+          <h2>Контакты</h2>
+          <address>г. Санкт-Петербург, м. Невский проспект, ул. Казанская 6.</address>
+          <a href="tel:+78125005050">8-812-500-50-50</a>
+          <p>Режим работы: с <time>11:00</time> до <time>20:00</time>, без выходных.</p>
+        </div>
       </div>
     </div>
   </footer>
