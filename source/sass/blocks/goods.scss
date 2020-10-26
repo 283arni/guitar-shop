@@ -1,0 +1,54 @@
+.goods {
+  width: 77%;
+}
+
+.goods__sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+
+  button {
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+}
+
+.goods__buttons-type {
+
+  span {
+    margin-right: 20px;
+  }
+
+  button {
+    &:first-of-type {
+      margin-right: 34px;
+    }
+  }
+}
+
+.goods__buttons-prices {
+  button {
+    width: 14px;
+    height: 10px;
+    background: no-repeat center url("../img/triangle.png");
+
+    &:first-of-type {
+      margin-right: 20px;
+    }
+
+    &:last-of-type {
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
