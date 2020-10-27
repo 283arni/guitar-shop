@@ -20,7 +20,6 @@
 .header__nav {
   margin-right: 44px;
 
-
   li:not(:last-of-type) {
     margin-right: 40px;
   }
@@ -31,7 +30,11 @@
     letter-spacing: 0.08em;
 
     &:hover {
-      border-bottom: 1px solid $black;
+      color: $crumbs;
+    }
+
+    &:active {
+      opacity: 0.5;
     }
   }
 }
@@ -48,6 +51,20 @@
       }
     }
 
+    a {
+      &:hover {
+        svg {
+          opacity: 0.8;
+        }
+      }
+
+      &:active {
+        svg {
+          opacity: 0.5;
+        }
+      }
+    }
+
     &:last-of-type {
       margin-right: 13px;
 
@@ -55,19 +72,11 @@
         display: block;
         position: relative;
         padding-right: 7px;
-
-        svg {
-          transition: 0.3s;
-        }
-
-        &:active {
-          opacity: 1;
-
-          svg {
-            opacity: 0.5;
-          }
-        }
       }
+    }
+
+    svg {
+      transition: 0.3s;
     }
   }
 

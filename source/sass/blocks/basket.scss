@@ -1,0 +1,156 @@
+.basket {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+
+  li {
+    border-top: 1px solid $line;
+    padding: 20px 0;
+
+    &:last-of-type {
+      border-bottom: 1px solid $line;
+    }
+  }
+}
+
+.basket__item {
+  display: flex;
+  justify-content: space-between;
+
+  > button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    height: 28px;
+  }
+
+}
+
+.basket__description {
+  letter-spacing: 0.05em;
+
+  h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 14px 0;
+  }
+
+  div {
+    font-size: 14px;
+
+    &:first-of-type {
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.basket__price {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+.basket__buttons {
+  display: flex;
+  border: 1px solid $gray-active;
+  height: 30px;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+
+  button {
+    border: 0;
+    height: 100%;
+    width: 28px;
+    background: transparent;
+    color: $gray-active;
+
+    &:first-of-type {
+      border-right: 1px solid $gray-active;
+    }
+
+    &:last-of-type {
+      border-left: 1px solid $gray-active;
+    }
+
+  }
+
+  div {
+    width: 28px;
+    color: $gray-active;
+  }
+}
+
+.basket__all-price {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.basket__form {
+
+  button {
+    border: none;
+    color: $white;
+    border-radius: 2px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.basket__promo {
+  letter-spacing: 0.05em;
+
+  h2 {
+    margin: 0 0  10px 0;
+  }
+
+  p {
+    margin: 0 0 20px 0;
+  }
+}
+
+.basket__field {
+  input {
+    border: 2px solid $line;
+    border-radius: 2px;
+    width: 170px;
+    margin-right: 30px;
+    padding: 8px;
+    text-align: center;
+  }
+
+  button {
+    background: $gray;
+    padding: 10px 20px;
+  }
+}
+
+.basket__submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  letter-spacing: 0.05em;
+
+  span {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  button {
+    background: $orange;
+    padding: 10px 30px;
+  }
+}

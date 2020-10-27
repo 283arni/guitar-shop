@@ -52,17 +52,17 @@
       </div>
     </div>
   </header>
-  <main class="catalog">
+  <main class="main">
     <div class="container">
       <h1>Каталог гитар</h1>
-      <div class="catalog__breadcrumbs">
+      <div class="main__breadcrumbs">
         <a href="#">Главная</a>
         <svg width="16" height="16">
           <use xlink:href="img/sprite_auto.svg#arrow"></use>
         </svg>
         <a href="#">Каталог</a>
       </div>
-      <div class="catalog__wrapper">
+      <div class="main__wrapper">
         <section class="filter">
           <h2>Фильтр</h2>
           <form>
@@ -113,18 +113,9 @@
             </div>
           </div>
           <div class="goods__list">
-            <ul>
-              <li>
-                <div class="goods__item">
-                  <picture>
-                    <source srcset="img/electro-1.webp 1x, img/electro-1@2x.webp 2x" type="image/webp">
-                    <!-- 1х: 80px; 2x: 160px -->
-                    <img src="img/electro-1.png" srcset="img/electro-1@2x.png 2x" width="80" height="202" alt="электрогитара">
-                  </picture>
-                </div>
-              </li>
-            </ul>
+            <ul></ul>
           </div>
+          <div class="goods__pagination"></div>
         </section>
       </div>
     </div>
@@ -205,6 +196,38 @@
       </div>
     </div>
   </footer>
+
+  <template id="card">
+    <li>
+      <div class="goods__item">
+        <picture>
+          <source type="image/webp">
+          <!-- 1х: 68px; 2x: 136px -->
+          <img src="img/electro-1.png" srcset="img/electro-1@2x.png 2x" width="68" height="190" alt="электрогитара">
+        </picture>
+        <div class="goods__popular">
+          <svg width="68" height="13">
+            <use xlink:href="img/sprite_auto.svg#stars"></use>
+          </svg>
+          <span>12</span>
+        </div>
+        <div class="goods__price">
+          <span>СURT T300</span>
+          <span>30 000 &#8381;</span>
+        </div>
+        <div class="goods__item-buttons">
+          <button type="button">Подробнее</button>
+          <button type="button">
+            <svg width="12" height="12">
+              <use xlink:href="img/sprite_auto.svg#cart"></use>
+            </svg>
+            <span>Купить</span>
+          </button>
+        </div>
+      </div>
+    </li>
+  </template>
+  <script src="js/vendor.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

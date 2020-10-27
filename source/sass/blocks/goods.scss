@@ -1,30 +1,39 @@
 .goods {
-  width: 77%;
+  width: 74.5%;
 }
 
 .goods__sort {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-
+  margin-bottom: 32px;
+  letter-spacing: 0.08em;
 
   button {
+    cursor: pointer;
     padding: 0;
     border: none;
     background: transparent;
+    letter-spacing: 0.07em;
   }
 }
 
 .goods__buttons-type {
-
   span {
-    margin-right: 20px;
+    margin-right: 14px;
   }
 
   button {
     &:first-of-type {
-      margin-right: 34px;
+      margin-right: 29px;
+    }
+
+    &:hover {
+      color: $gray-hover;
+    }
+
+    &:active {
+      color: $gray-active;
     }
   }
 }
@@ -34,9 +43,10 @@
     width: 14px;
     height: 10px;
     background: no-repeat center url("../img/triangle.png");
+    margin-right: 10px;
 
     &:first-of-type {
-      margin-right: 20px;
+      margin-right: 18px;
     }
 
     &:last-of-type {
@@ -49,6 +59,159 @@
 
     &:active {
       opacity: 0.5;
+    }
+  }
+}
+
+.goods__list {
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    width: 220px;
+    text-align: center;
+    padding: 19px 13px;
+    border: 1px solid $line;
+    margin-bottom: 30px;
+  }
+}
+
+.goods__popular {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px;
+
+  svg {
+    fill: none;
+    margin-right: 5px;
+  }
+
+  span {
+    font-family: $pop;
+    font-size: 10px;
+    color: $gray-active;
+  }
+}
+
+.goods__price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 13px;
+
+  span {
+    font-size: 14px;
+    letter-spacing: 0.07em;
+  }
+}
+
+.goods__item-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: $white;
+  }
+
+  button:first-of-type {
+    background: $gray;
+    padding: 5px 10px;
+
+    &:hover {
+      background: $gray-hover;
+    }
+
+    &:active {
+      background: $gray-active;
+    }
+  }
+
+  button:last-of-type {
+    background: $orange;
+    padding: 5px 13px;
+
+    &:hover {
+      background: $orange-hover;
+    }
+
+    &:active {
+      background: $orange-active;
+    }
+  }
+}
+
+.goods__pagination {
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    padding: 5px 8px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: $black;
+    cursor: pointer;
+  }
+
+  li {
+    border: 1px solid $gray-active;
+    border-radius: 2px;
+
+    &:not(:last-of-type) {
+      margin-left: 8px;
+    }
+
+    &:hover {
+      border: 1px solid $crumbs;
+
+      a {
+        color: $white;
+        background: $crumbs
+      }
+    }
+
+    &:active {
+      border: 1px solid rgba($crumbs, 0.5);
+      opacity: 0.5;
+    }
+
+    &:last-of-type {
+      margin-left: 13px;
+
+      a {
+        padding: 5px 20px;
+      }
+    }
+
+    &.active {
+      border: 1px solid $gray-hover;
+
+      a {
+        background: $gray-hover;
+        color: $white;
+      }
+    }
+
+    &.disabled {
+      opacity: 0.3;
+      pointer-events: none;
     }
   }
 }

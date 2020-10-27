@@ -30,6 +30,10 @@
   li:not(:last-of-type) {
     margin-right: 23px;
   }
+
+  a:hover {
+    opacity: 0.5;
+  }
 }
 
 .footer__info {
@@ -46,7 +50,6 @@
   }
 
   &:last-of-type {
-    // width: 17%;
     margin-left: 97px;
   }
 

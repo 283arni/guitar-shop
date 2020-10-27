@@ -5,5 +5,58 @@
 })();
 
 (function () {
-  console.log(JSON.parse(window.server))
+  var guitars = JSON.parse(window.server);
+  var card = document.querySelector('#card');
+  var listCards = [];
+
+  if (!guitars || !card) {
+    return;
+  }
+
+  function createCard(item) {
+    var cloneCard = card.content.querySelector('li').cloneNode(true);
+    var source = cloneCard.querySelector('source');
+    var img = cloneCard.querySelector('img');
+    var popular = cloneCard.querySelector('.goods__popular span');
+    var priceBlock = cloneCard.querySelector('.goods__price');
+    var name = priceBlock.firstElementChild;
+    var price = priceBlock.lastElementChild;
+
+    source.srcset = 'img/' + item.image + '.webp 1x, img/' + item.image + '@2x.webp 2x';
+    img.src = 'img/' + item.image + '.png';
+    img.srcset = 'img/' + item.image + '@2x.png 2x';
+    img.alt = item.type;
+    popular.textContent = item.popular;
+    name.textContent = item.name;
+    price.innerHTML = item.price + ' &#8381;';
+
+
+    return cloneCard;
+  }
+
+  guitars.forEach(function (guitar) {
+    listCards.push(createCard(guitar));
+  });
+
+  window.listCards = listCards;
+})();
+
+(function () {
+  var $ = window.jQuery;
+  var pages = document.querySelector('.goods__pagination');
+
+  if (!pages) {
+    return;
+  }
+
+  $('.goods__pagination').pagination({
+    dataSource: window.listCards,
+    pageSize: 9,
+    showPrevious: false,
+    nextText: 'Далее',
+    callback: function (data) {
+      var html = data;
+      $('.goods__list ul').html(html);
+    }
+  });
 })();
