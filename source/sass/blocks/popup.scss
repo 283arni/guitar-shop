@@ -1,0 +1,196 @@
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba($gray-hover, 0.6);
+}
+
+.popup__wrapper {
+  background: $white;
+  border-radius: 4px;
+  width: 740px;
+  padding: 27px 24px 27px 50px;
+
+  &_success {
+    padding-bottom: 55px;
+
+    .popup__quenstion {
+      margin-bottom: 38px;
+    }
+  }
+}
+
+.popup__quenstion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+
+  span {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+    bottom: 10px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
+
+.popup__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup__info {
+  display: flex;
+}
+
+.popup__description {
+  margin: 10px 0 0 40px;
+  letter-spacing: 0.07em;
+
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 11px;
+  }
+
+  div {
+    font-size: 14px;
+
+    &:first-of-type {
+      margin-bottom: 6px;
+    }
+
+    &:last-of-type {
+      font-weight: 700;
+      font-size: 20px;
+      margin-top: 15px;
+    }
+  }
+}
+
+.popup__buttons {
+  display: flex;
+  flex-direction: column;
+  margin-right: 27px;
+
+  button {
+    font-weight: 700;
+    border-radius: 2px;
+    letter-spacing: 0.07em;
+
+    &:first-of-type {
+      margin: 11px 0 16px 0;
+      padding: 14px 44px;
+      color: $white;
+      border: none;
+      background: $orange;
+
+      &:hover {
+        background: $orange-hover;
+      }
+
+      &:active {
+        background: $orange-active;
+      }
+    }
+
+    &:last-of-type {
+      padding: 13px 10px;
+      color: $gray-hover;
+      border: 1px solid $gray-hover;
+      background: transparent;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &_add {
+    button:first-of-type {
+      margin-top: 11px;
+      padding: 14px 17px;
+      color: $white;
+      border: none;
+      background: $orange;
+
+      &:hover {
+        background: $orange-hover;
+      }
+
+      &:active {
+        background: $orange-active;
+      }
+    }
+  }
+}
+
+.popup__links {
+  display: flex;
+  justify-content: center;
+
+  a {
+    display: block;
+    font-weight: 700;
+    border-radius: 2px;
+    letter-spacing: 0.07em;
+
+    &:first-of-type {
+      padding: 14px 23px;
+      color: $white;
+      border: none;
+      background: $orange;
+      margin-right: 38px;
+
+      &:hover {
+        background: $orange-hover;
+      }
+
+      &:active {
+        background: $orange-active;
+      }
+    }
+
+    &:last-of-type {
+      padding: 13px 12px;
+      color: $gray-hover;
+      border: 1px solid $gray-hover;
+      background: transparent;
+      margin-right: 25px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
+  }
+}

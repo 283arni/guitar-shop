@@ -66,7 +66,7 @@
       vertical-align: middle;
       width: 24px;
       height: 24px;
-      content: '';
+      content: "";
       border: 1px solid $gray-active;
       border-radius: 2px;
       margin-right: 17px;
@@ -77,8 +77,7 @@
     display: none;
   }
 
-  input:checked+label::before {
+  input:checked + label::before {
     background: no-repeat center url("../img/mark.png");
   }
-
 }

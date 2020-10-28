@@ -16,13 +16,11 @@
   padding-top: 60px;
 }
 
-
 .footer__logo {
   margin-bottom: 53px;
 }
 
 .footer__socials {
-
   ul {
     display: flex;
   }
@@ -32,6 +30,10 @@
   }
 
   a:hover {
+    opacity: 0.8;
+  }
+
+  a:active {
     opacity: 0.5;
   }
 }
@@ -75,6 +77,14 @@
     color: $white;
     font-size: 10px;
     letter-spacing: 0.13em;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
   }
 
   li {

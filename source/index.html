@@ -77,24 +77,24 @@
             <div class="filter__item">
               <h2>Тип гитар</h2>
               <div class="filter__item-check">
-                <input type="checkbox" name="" id="acoustic-guitar">
+                <input type="checkbox" name="acoustic" id="acoustic-guitar">
                 <label for="acoustic-guitar">Акустические гитары</label>
-                <input type="checkbox" name="" id="electro-guitar">
+                <input type="checkbox" name="electro" id="electro-guitar">
                 <label for="electro-guitar">Электрогитары</label>
-                <input type="checkbox" name="" id="ukulele">
+                <input type="checkbox" name="ukulele" id="ukulele">
                 <label for="ukulele">Укулеле</label>
               </div>
             </div>
             <div class="filter__item">
               <h2>Количество струн</h2>
               <div class="filter__item-check">
-                <input type="checkbox" name="" id="strings-4">
+                <input type="checkbox" name="strings-4" id="strings-4">
                 <label for="strings-4">4</label>
-                <input type="checkbox" name="" id="strings-6">
+                <input type="checkbox" name="strings-6" id="strings-6">
                 <label for="strings-6">6</label>
-                <input type="checkbox" name="" id="strings-7">
+                <input type="checkbox" name="strings-7" id="strings-7">
                 <label for="strings-7">7</label>
-                <input type="checkbox" name="" id="strings-12">
+                <input type="checkbox" name="strings-12" id="strings-12">
                 <label for="strings-12">12</label>
               </div>
             </div>
@@ -227,6 +227,59 @@
       </div>
     </li>
   </template>
+
+  <template id="add">
+    <div class="popup">
+      <div class="popup__wrapper">
+        <div class="popup__quenstion">
+          <span>Добавить товар в корзину</span>
+          <button type="button">
+            <svg width="12" height="12">
+              <use xlink:href="img/sprite_auto.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="popup__item">
+          <div class="popup__info">
+            <picture>
+              <source srcset="img/electro-2.webp 1x, img/electro-2@2x.webp 2x" type="image/webp">
+              <!-- 1х: 56px; 2x: 112px -->
+              <img src="img/electro-1.png" srcset="img/electro-1@2x.png 2x" width="56" height="128" alt="электрогитара">
+            </picture>
+            <div class="popup__description">
+              <h2>Гитара Честер bass</h2>
+              <div>Артикул: SO757575</div>
+              <div>Электрогитара, 6 струнная </div>
+              <div>Цена: 17 500 &#8381;</div>
+            </div>
+          </div>
+          <div class="popup__buttons popup__buttons_add">
+            <button type="button">Добавить в корзину</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="success">
+    <div class="popup">
+      <div class="popup__wrapper popup__wrapper_success">
+        <div class="popup__quenstion">
+          <span>Товар успешно добавлен в корзину</span>
+          <button type="button">
+            <svg width="12" height="12">
+              <use xlink:href="img/sprite_auto.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="popup__links">
+          <a href="basket.html">Перейти в корзину</a>
+          <a href="#">Продолжить покупки</a>
+        </div>
+      </div>
+    </div>
+  </template>
+
   <script src="js/vendor.js"></script>
   <script src="js/script.js"></script>
 </body>

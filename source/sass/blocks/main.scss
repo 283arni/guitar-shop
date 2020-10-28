@@ -3,14 +3,17 @@
   padding: 213px 0 138px 0;
   position: relative;
   background: no-repeat center 24px/100% 74px url("../img/lines.png"),
-              linear-gradient(transparent 99%, $dark-gray 99%, $dark-gray 99.4%, transparent 99.4%),
-              no-repeat left 117% url("../img/bg-guitar.png");
+    linear-gradient(transparent 99%, $dark-gray 99%, $dark-gray 99.4%, transparent 99.4%),
+    no-repeat left bottom url("../img/bg-bottom.png");
 
   &_basket {
-    padding: 237px 0 138px 0;
+    padding: 237px 0 172px 0;
+    background: no-repeat center 24px/100% 74px url("../img/lines.png"),
+      linear-gradient(transparent 98%, $dark-gray 98%, $dark-gray 98.5%, transparent 98.5%),
+      no-repeat left bottom url("../img/bg-bottom.png");
   }
 
-  &:after {
+  &::after {
     display: block;
     position: absolute;
     top: -30px;
@@ -18,7 +21,7 @@
     width: 819px;
     height: 285px;
     transform: rotate(180deg);
-    content: '';
+    content: "";
     background: no-repeat url("../img/bg-guitar.png");
   }
 
@@ -63,7 +66,3 @@
     margin-right: 10px;
   }
 }
-
-
-
-
