@@ -5,11 +5,48 @@
 })();
 
 (function () {
-  var guitars = JSON.parse(window.server);
-  var card = document.querySelector('#card');
-  var listCards = [];
+  var typeBoxs = document.querySelectorAll('#type-guitars input:checked');
+  var stringsBoxs = document.querySelectorAll('#strings-6');
 
-  if (!guitars || !card) {
+  function disableStrings () {
+    typeBoxs.forEach(function (type) {
+      stringsBoxs.forEach(box) {
+
+      }
+    })
+  }
+  typeBoxs
+
+})();
+
+(function () {
+  function filterGuitars(element, list) {
+    var checkedBoxs = element.querySelectorAll('input[type="checkbox"]:checked');
+    var filteredList = [];
+    console.log(checkedBoxs)
+    list.forEach(function (item) {
+      checkedBoxs.forEach(function (box) {
+        box.labels[0].classList.add('sadadadada')
+        if (box.value === item.type || +box.value === item.strings) {
+          filteredList.push(item);
+        }
+      });
+    });
+
+    if (!filteredList.length) {
+      filteredList = list;
+    }
+
+    return filteredList;
+  }
+
+  window.filterGuitars = filterGuitars;
+})();
+
+(function () {
+  var card = document.querySelector('#card');
+
+  if (!card) {
     return;
   }
 
@@ -30,33 +67,53 @@
     name.textContent = item.name;
     price.innerHTML = item.price + ' &#8381;';
 
-
     return cloneCard;
   }
 
-  guitars.forEach(function (guitar) {
-    listCards.push(createCard(guitar));
-  });
+  function createList(list) {
+    var listCards = [];
 
-  window.listCards = listCards;
+    list.forEach(function (guitar) {
+      listCards.push(createCard(guitar));
+    });
+
+    return listCards;
+  }
+
+  window.render = {
+    createList: createList
+  };
 })();
 
 (function () {
   var $ = window.jQuery;
   var pages = document.querySelector('.goods__pagination');
+  var filter = document.querySelector('#filter');
+  var guitars = JSON.parse(window.server);
+
+  var createList = window.render.createList;
+  var filterGuitars = window.filterGuitars;
 
   if (!pages) {
     return;
   }
 
-  $('.goods__pagination').pagination({
-    dataSource: window.listCards,
-    pageSize: 9,
-    showPrevious: false,
-    nextText: 'Далее',
-    callback: function (data) {
-      var html = data;
-      $('.goods__list ul').html(html);
-    }
+  function renderListGuitars() {
+    $('.goods__pagination').pagination({
+      dataSource: createList(filterGuitars(filter, guitars)),
+      pageSize: 9,
+      showPrevious: false,
+      nextText: 'Далее',
+      callback: function (data) {
+        var html = data;
+        $('.goods__list ul').html(html);
+      }
+    });
+  }
+
+  filter.addEventListener('change', function () {
+    renderListGuitars();
   });
+
+  renderListGuitars();
 })();

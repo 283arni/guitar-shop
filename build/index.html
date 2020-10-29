@@ -65,36 +65,36 @@
       <div class="main__wrapper">
         <section class="filter">
           <h2>Фильтр</h2>
-          <form>
+          <form id="filter">
             <div class="filter__item">
               <h2>Цена, &#8381;</h2>
               <div class="filter__item-fields">
-                <input type="number" placeholder="1000">
+                <input type="number" placeholder="1 000">
                 <div></div>
-                <input type="number" placeholder="10000">
+                <input type="number" placeholder="10 000">
               </div>
             </div>
             <div class="filter__item">
               <h2>Тип гитар</h2>
-              <div class="filter__item-check">
-                <input type="checkbox" name="" id="acoustic-guitar">
+              <div class="filter__item-check" id="type-guitars">
+                <input type="checkbox" name="acoustic" value="акустическая гитара" id="acoustic-guitar">
                 <label for="acoustic-guitar">Акустические гитары</label>
-                <input type="checkbox" name="" id="electro-guitar">
+                <input type="checkbox" name="electro" value="электрогитара" id="electro-guitar">
                 <label for="electro-guitar">Электрогитары</label>
-                <input type="checkbox" name="" id="ukulele">
+                <input type="checkbox" name="ukulele" value="укулеле" id="ukulele">
                 <label for="ukulele">Укулеле</label>
               </div>
             </div>
             <div class="filter__item">
               <h2>Количество струн</h2>
-              <div class="filter__item-check">
-                <input type="checkbox" name="" id="strings-4">
+              <div class="filter__item-check" id="strings-guitars">
+                <input type="checkbox" name="strings-4" value="4" id="strings-4">
                 <label for="strings-4">4</label>
-                <input type="checkbox" name="" id="strings-6">
+                <input type="checkbox" name="strings-6" value="6" id="strings-6">
                 <label for="strings-6">6</label>
-                <input type="checkbox" name="" id="strings-7">
+                <input type="checkbox" name="strings-7" value="7" id="strings-7">
                 <label for="strings-7">7</label>
-                <input type="checkbox" name="" id="strings-12">
+                <input type="checkbox" name="strings-12" value="12" id="strings-12">
                 <label for="strings-12">12</label>
               </div>
             </div>
