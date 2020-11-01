@@ -32,7 +32,8 @@
       color: $gray-hover;
     }
 
-    &:active {
+    &:active,
+    &.active {
       color: $gray-active;
     }
   }
@@ -57,7 +58,8 @@
       opacity: 0.8;
     }
 
-    &:active {
+    &:active,
+    &.active {
       opacity: 0.5;
     }
   }
@@ -114,7 +116,8 @@
   display: flex;
   justify-content: space-between;
 
-  button {
+  button,
+  a {
     cursor: pointer;
     border: none;
     border-radius: 2px;
@@ -124,7 +127,7 @@
     color: $white;
   }
 
-  button:first-of-type {
+  a {
     background: $gray;
     padding: 5px 10px;
 

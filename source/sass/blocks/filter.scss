@@ -34,11 +34,24 @@
     height: 28px;
     border-radius: 2px;
     border: 1px solid $culc;
+    text-align: center;
+    appearance: textfield;
+    font-size: 14px;
 
     &::placeholder {
       font-size: 14px;
       color: rgba($black, 0.6);
       text-align: center;
+    }
+
+    &::-webkit-outer-spin-button:focus,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
+    &:hover,
+    &:focus {
+      appearance: number-input;
     }
   }
 }
@@ -79,5 +92,15 @@
 
   input:checked + label::before {
     background: no-repeat center url("../img/mark.png");
+  }
+
+  input:disabled + label {
+    pointer-events: none;
+    color: $disabled;
+
+    &::before {
+      border: 1px solid $disabled;
+      background: $bg-disabled;
+    }
   }
 }

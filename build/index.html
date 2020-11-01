@@ -41,11 +41,11 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" data-link="basket" id="link-basket">
               <svg width="14" height="14">
                 <use xlink:href="img/sprite_auto.svg#basket"></use>
               </svg>
-              <span>2</span>
+              <span></span>
             </a>
           </li>
         </ul>
@@ -69,9 +69,9 @@
             <div class="filter__item">
               <h2>Цена, &#8381;</h2>
               <div class="filter__item-fields">
-                <input type="number" placeholder="1 000">
+                <input type="number" placeholder="1 000" min="0" value="">
                 <div></div>
-                <input type="number" placeholder="10 000">
+                <input type="number" placeholder="10 000" min="0" value="">
               </div>
             </div>
             <div class="filter__item">
@@ -104,12 +104,12 @@
           <div class="goods__sort">
             <div class="goods__buttons-type">
               <span>Сортировать:</span>
-              <button type="button">по цене</button>
-              <button type="button">по популярности</button>
+              <button type="button" data-sort="price">по цене</button>
+              <button type="button" data-sort="popular">по популярности</button>
             </div>
             <div class="goods__buttons-prices">
-              <button type="button"></button>
-              <button type="button"></button>
+              <button type="button" data-sort="toMore"></button>
+              <button type="button" data-sort="toLess"></button>
             </div>
           </div>
           <div class="goods__list">
@@ -118,6 +118,72 @@
           <div class="goods__pagination"></div>
         </section>
       </div>
+    </div>
+  </main>
+  <main class="main main_basket" hidden="">
+    <div class="container">
+      <h1>Корзина</h1>
+      <div class="main__breadcrumbs main__breadcrumbs_basket">
+        <a href="#">Главная</a>
+        <svg width="16" height="16">
+          <use xlink:href="img/sprite_auto.svg#arrow"></use>
+        </svg>
+        <a href="#">Каталог</a>
+        <svg width="16" height="16">
+          <use xlink:href="img/sprite_auto.svg#arrow"></use>
+        </svg>
+        <a href="#">Оформляем</a>
+      </div>
+      <section class="basket">
+        <ul>
+          <li>
+            <div class="basket__item">
+              <button type="button">
+                <svg width="12" height="12">
+                  <use xlink:href="img/sprite_auto.svg#close"></use>
+                </svg>
+              </button>
+              <picture>
+                <source srcset="img/electro-2.webp 1x, img/electro-2@2x.webp 2x" type="image/webp">
+                <!-- 1х: 48px; 2x: 96px -->
+                <img src="img/electro-1.png" srcset="img/electro-1@2x.png 2x" width="48" height="124" alt="электрогитара">
+              </picture>
+              <div class="basket__description">
+                <h2>электрогитара честер</h2>
+                <div>Артикул: SO757575</div>
+                <div>Электрогитара, 6 струнная </div>
+              </div>
+              <div class="basket__price">
+                <span>17 500 &#8381;</span>
+              </div>
+              <div class="basket__buttons">
+                <button type="button">-</button>
+                <div>1</div>
+                <button type="button">+</button>
+              </div>
+              <div class="basket__all-price">
+                <span>17 500 &#8381;</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="basket__form">
+          <form>
+            <div class="basket__promo">
+              <h2>Промокод на скидку</h2>
+              <p>Введите свой промокод, если он у вас есть.</p>
+              <div class="basket__field">
+                <input type="text">
+                <button type="button">Применить купон</button>
+              </div>
+            </div>
+            <div class="basket__submit">
+              <span>Всего: 47 000 &#8381;</span>
+              <button type="submit">Оформить заказ</button>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
   </main>
   <footer class="footer">
@@ -198,7 +264,7 @@
   </footer>
 
   <template id="card">
-    <li>
+    <li data-id="1">
       <div class="goods__item">
         <picture>
           <source type="image/webp">
@@ -216,7 +282,7 @@
           <span>30 000 &#8381;</span>
         </div>
         <div class="goods__item-buttons">
-          <button type="button">Подробнее</button>
+          <a href="#">Подробнее</a>
           <button type="button">
             <svg width="12" height="12">
               <use xlink:href="img/sprite_auto.svg#cart"></use>
@@ -249,7 +315,7 @@
             <div class="popup__description">
               <h2>Гитара Честер bass</h2>
               <div>Артикул: SO757575</div>
-              <div>Электрогитара, 6 струнная </div>
+              <span>Электрогитара, 6 струнная</span>
               <div>Цена: 17 500 &#8381;</div>
             </div>
           </div>
@@ -259,6 +325,39 @@
         </div>
       </div>
     </div>
+  </template>
+
+  <template id="basket-item">
+    <li data-id="1">
+      <div class="basket__item">
+        <button type="button">
+          <svg width="12" height="12">
+            <use xlink:href="img/sprite_auto.svg#close"></use>
+          </svg>
+        </button>
+        <picture>
+          <source srcset="img/electro-2.webp 1x, img/electro-2@2x.webp 2x" type="image/webp">
+          <!-- 1х: 48px; 2x: 98px -->
+          <img src="img/electro-1.png" srcset="img/electro-1@2x.png 2x" width="48" height="124" alt="электрогитара">
+        </picture>
+        <div class="basket__description">
+          <h2>электрогитара честер bass</h2>
+          <div>Артикул: SO757575</div>
+          <div>Электрогитара, 6 струнная </div>
+        </div>
+        <div class="basket__price">
+          <span>17 500 &#8381;</span>
+        </div>
+        <div class="basket__buttons">
+          <button type="button">-</button>
+          <div>1</div>
+          <button type="button">+</button>
+        </div>
+        <div class="basket__all-price">
+          <span>17 500 &#8381;</span>
+        </div>
+      </div>
+    </li>
   </template>
 
   <template id="success">
@@ -273,8 +372,42 @@
           </button>
         </div>
         <div class="popup__links">
-          <a href="basket.html">Перейти в корзину</a>
+          <a href="#" data-link="basket">Перейти в корзину</a>
           <a href="#">Продолжить покупки</a>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="delete">
+    <div class="popup">
+      <div class="popup__wrapper">
+        <div class="popup__quenstion">
+          <span>Удалить этот товар?</span>
+          <button type="button">
+            <svg width="12" height="12">
+              <use xlink:href="img/sprite_auto.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="popup__item">
+          <div class="popup__info">
+            <picture>
+              <source srcset="img/electro-2.webp 1x, img/electro-2@2x.webp 2x" type="image/webp">
+              <!-- 1х: 56px; 2x: 112px -->
+              <img src="img/electro-1.png" srcset="img/electro-1@2x.png 2x" width="56" height="128" alt="электрогитара">
+            </picture>
+            <div class="popup__description">
+              <h2>Гитара Честер bass</h2>
+              <div>Артикул: SO757575</div>
+              <div>Электрогитара, 6 струнная </div>
+              <div>Цена: 17 500 &#8381;</div>
+            </div>
+          </div>
+          <div class="popup__buttons">
+            <button type="button">Удалить товар</button>
+            <button type="button">Продолжить покупки</button>
+          </div>
         </div>
       </div>
     </div>
