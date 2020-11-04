@@ -156,6 +156,25 @@
     margin-right: 30px;
     padding: 7px;
     text-align: center;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid $orange;
+    }
+
+    &.error {
+      border: 2px solid $red;
+
+      &::placeholder {
+        color: $red;
+        font-size: 11px;
+
+      }
+    }
   }
 
   button {

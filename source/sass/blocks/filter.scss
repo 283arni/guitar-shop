@@ -38,6 +38,15 @@
     appearance: textfield;
     font-size: 14px;
 
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $orange;
+    }
+
     &::placeholder {
       font-size: 14px;
       color: rgba($black, 0.6);

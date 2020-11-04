@@ -33,6 +33,11 @@
   function usePromocodeClick(promo) {
     var addPrices = window.basket.addPrices;
     var sum = parseInt(addPrices(), 10);
+
+    if (!sum) {
+      return;
+    }
+
     switch (promo) {
       case Promocode.HIT:
         price.innerHTML = 'Всего: ' + Math.floor(sum * (Numerator.ONE - Numerator.TEN_PERCENT / Numerator.HUNDRED)) + ' &#8381;';
@@ -46,8 +51,18 @@
         price.innerHTML = 'Всего: ' + Math.floor(sum * Numerator.THIRTY_PERCENT / Numerator.HUNDRED) < Numerator.MAX_SALE ? Math.floor(sum * (Numerator.ONE - Numerator.THIRTY_PERCENT / Numerator.HUNDRED)) : sum - Numerator.MAX_SALE + ' &#8381;';
         field.value = '';
         break;
+      default:
+        field.classList.add('error');
+        field.value = '';
+        field.placeholder = 'Промокод не действителен';
     }
   }
+
+  field.addEventListener('focus', function () {
+    field.classList.remove('error');
+    field.placeholder = '';
+  });
+
   field.addEventListener('input', function () {
     field.value = field.value.toUpperCase();
   });
