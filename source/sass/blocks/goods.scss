@@ -69,7 +69,6 @@
   ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -81,6 +80,10 @@
     padding: 19px 13px;
     border: 1px solid $line;
     margin-bottom: 30px;
+
+    &:not(:nth-child(3n)) {
+      margin-right: 20px;
+    }
   }
 }
 
@@ -165,7 +168,7 @@
 
   a {
     display: block;
-    padding: 5px 8px;
+    padding: 4px 8px;
     font-size: 12px;
     letter-spacing: 0.08em;
     color: $black;
@@ -198,7 +201,7 @@
       margin-left: 13px;
 
       a {
-        padding: 5px 20px;
+        padding: 4px 20px;
       }
     }
 

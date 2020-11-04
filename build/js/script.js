@@ -1,10 +1,98 @@
 'use strict';
-// server
 (function () {
   window.server = '[{"id": 1, "image": "electro-2", "code": "SO757575","name": "Честер Bass","type": "электрогитара","popular": 15,"strings": 7,"price": 17500},{"id": 2, "image": "electro-1", "code": "TK129049","name": "СURT Z300","type": "электрогитара","popular": 9,"strings": 7,"price": 29500},{"id": 3, "image": "ukulele", "code": "RO111111","name": "Roman LX","type": "укулеле","popular": 21,"strings": 4,"price": 6800},{"id": 4, "image": "electro-3", "code": "TK436457","name": "СURT T300","type": "электрогитара","popular": 15,"strings": 6,"price": 30000},{"id": 5, "image": "acoustic", "code": "DI192138","name": "Dania Super","type": "акустическая гитара","popular": 5,"strings": 7,"price": 3500},{"id": 6, "image": "electro-4", "code": "SO934345","name": "Честер WX ","type": "электрогитара","popular": 17,"strings": 6,"price": 15300},{"id": 7,"image": "ukulele","code": "DI082347","name": "Dania VX","type": "укулеле","popular": 5,"strings": 4,"price": 2200},{"id": 8,"image": "electro-1","code": "SO135646","name": "Честер Plus ","type": "электрогитара","popular": 27,"strings": 4,"price": 30000},{"id": 9,"image": "acoustic","code": "VO154751","name": "Виолана 300","type": "акустическая гитара","popular": 3,"strings": 7,"price": 1700},{"id": 10,"image": "electro-2","code": "TK244556","name": "СURT Clasic","type": "электрогитара","popular": 20,"strings": 4,"price": 23000},{"id": 11,"image": "electro-2","code": "TK134663","name": "СURT Z250","type": "электрогитара","popular": 19,"strings": 4,"price": 18700},{"id": 12,"image": "electro-3","code": "SO123212","name": "Честер 7X","type": "электрогитара","popular": 30,"strings": 7,"price": 35000},{"id": 13,"image": "electro-3","code": "SO123234","name": "Честер 6V","type": "электрогитара","popular": 28,"strings": 6,"price": 14900},{"id": 14,"image": "acoustic","code": "VO519510","name": "Виолана Mix","type": "акустическая гитара","popular": 7,"strings": 6,"price": 7600},{"id": 15,"image": "acoustic","code": "VO457369","name": "Виолана 250x","type": "акустическая гитара","popular": 19,"strings": 6,"price": 6500},{"id": 16,"image": "acoustic","code": "FB625903","name": "Фабио Лайт","type": "акустическая гитара","popular": 26,"strings": 7,"price": 12000},{"id": 17,"image": "acoustic","code": "FB576948","name": "Фабио L100","type": "акустическая гитара","popular": 31,"strings": 7,"price": 9900},{"id": 18,"image": "acoustic","code": "LU012032","name": "Liana Z200","type": "акустическая гитара","popular": 28,"strings": 12,"price": 8900},{"id": 19,"image": "acoustic","code": "LU546853","name": "Liana Z100","type": "акустическая гитара","popular": 34,"strings": 12,"price": 10500},{"id": 20,"image": "acoustic","code": "LU458283","name": "Liana Z300","type": "акустическая гитара","popular": 9,"strings": 6,"price": 13300},{"id": 21,"image": "ukulele","code": "RO324341","name": "Roman RX","type": "укулеле","popular": 37,"strings": 4,"price": 4800},{"id": 22,"image": "ukulele","code": "RO214235","name": "Roman TX","type": "укулеле","popular": 5,"strings": 4,"price": 1900},{"id": 23,"image": "ukulele","code": "DI132414","name": "Dania U100","type": "укулеле","popular": 23,"strings": 4,"price": 2500},{"id": 24,"image": "ukulele","code": "DI934754","name": "Dania WR","type": "укулеле","popular": 3,"strings": 4,"price": 3800},{"id": 25,"image": "ukulele","code": "DI034292","name": "Dania LE","type": "укулеле","popular": 10,"strings": 4,"price": 4100},{"id": 26,"image": "ukulele","code": "MI193214","name": "Mirana V10","type": "укулеле","popular": 14,"strings": 4,"price": 2700},{"id": 27,"image": "ukulele","code": "VO043244","name": "Виолана Mini","type": "укулеле","popular": 29,"strings": 4,"price": 6700}]';
 })();
 
-// card basket
+(function () {
+  var Numerator = {
+    ONE: 1,
+    TEN_PERCENT: 10,
+    THIRTY_PERCENT: 30,
+    HUNDRED: 100,
+    MAX_SALE: 3500,
+    SALE: 700
+  };
+
+  var Promocode = {
+    HIT: 'GITARAHIT',
+    SUPER: 'SUPERGITARA',
+    GUITAR: 'GITARA2020'
+  };
+
+  var form = document.querySelector('.basket__form');
+
+  if (!form) {
+    return;
+  }
+
+  var field = form.querySelector('.basket__field input');
+  var button = form.querySelector('.basket__field button');
+  var price = form.querySelector('.basket__submit span');
+
+
+  function usePromocodeClick(promo) {
+    var addPrices = window.basket.addPrices;
+    var sum = parseInt(addPrices(), 10);
+    switch (promo) {
+      case Promocode.HIT:
+        price.innerHTML = 'Всего: ' + Math.floor(sum * (Numerator.ONE - Numerator.TEN_PERCENT / Numerator.HUNDRED)) + ' &#8381;';
+        field.value = '';
+        break;
+      case Promocode.SUPER:
+        price.innerHTML = 'Всего: ' + (sum - Numerator.SALE) + ' &#8381;';
+        field.value = '';
+        break;
+      case Promocode.GUITAR:
+        price.innerHTML = 'Всего: ' + Math.floor(sum * Numerator.THIRTY_PERCENT / Numerator.HUNDRED) < Numerator.MAX_SALE ? Math.floor(sum * (Numerator.ONE - Numerator.THIRTY_PERCENT / Numerator.HUNDRED)) : sum - Numerator.MAX_SALE + ' &#8381;';
+        field.value = '';
+        break;
+    }
+  }
+  field.addEventListener('input', function () {
+    field.value = field.value.toUpperCase();
+  });
+
+  button.addEventListener('click', function () {
+    usePromocodeClick(field.value);
+  });
+})();
+
+(function () {
+  var body = document.querySelector('body');
+  var templateCard = document.querySelector('#delete');
+
+  if (!templateCard) {
+    return;
+  }
+
+  var copyPopup = templateCard.content.querySelector('.popup');
+
+  function createPopupBasket(currentGuitar) {
+    var cloneCard = copyPopup.cloneNode(true);
+    var popupSource = cloneCard.querySelector('.popup__info source');
+    var popupImg = cloneCard.querySelector('.popup__info img');
+    var popupTitle = cloneCard.querySelector('.popup__description h2');
+    var popupCode = cloneCard.querySelector('.popup__description div:first-of-type');
+    var popupInfo = cloneCard.querySelector('.popup__description span');
+    var popupPrice = cloneCard.querySelector('.popup__description div:last-of-type');
+
+    popupSource.srcset = 'img/' + currentGuitar.image + '.webp 1x, img/' + currentGuitar.image + '@2x.webp 2x';
+    popupImg.src = 'img/' + currentGuitar.image + '.png';
+    popupImg.srcset = 'img/' + currentGuitar.image + '@2x.png 2x';
+    popupImg.alt = currentGuitar.type + ', ' + currentGuitar.strings + ' струнная';
+    popupTitle.textContent = 'ГИТАРА ' + currentGuitar.name.toUpperCase();
+    popupCode.textContent = 'Артикул: ' + currentGuitar.code;
+    popupInfo.textContent = currentGuitar.type + ', ' + currentGuitar.strings + ' струнная';
+    popupPrice.innerHTML = 'Цена: ' + currentGuitar.price + ' &#8381;';
+
+    body.append(cloneCard);
+  }
+
+  window.basketPopup = {
+    createPopupBasket: createPopupBasket
+  };
+})();
+
 (function () {
   var card = document.querySelector('#basket-item');
 
@@ -54,24 +142,93 @@
 
 })();
 
-// main basket
 (function () {
+  if (!window.basketCard) {
+    return;
+  }
+
+  var Escape = {
+    KEY_CODE: 'Escape',
+    KEY: 27
+  };
+
   var basketList = document.querySelector('.basket ul');
-  var sumAllPrices = document.querySelector('.basket__submit span');
   var indexGoods = document.querySelector('.header__list-icon span');
 
   var createBasketList = window.basketCard.createBasketList;
 
-  function addPrices(list, index) {
+  function addPrices() {
+    var allPrices = document.querySelectorAll('.basket__all-price span');
+    var sumAllPrices = document.querySelector('.basket__submit span');
+
     var sum = 0;
 
-    list.forEach(function (item, i) {
-      if (index && i !== index || !index) {
-        sum += parseInt(item.textContent, 10);
-      }
+    allPrices.forEach(function (item) {
+      sum += parseInt(item.textContent, 10);
     });
 
     sumAllPrices.innerHTML = 'Всего: ' + sum + ' &#8381;';
+
+    return sum;
+  }
+
+  function openPopupBasket(list, element) {
+    var createPopupBasket = window.basketPopup.createPopupBasket;
+
+    list.some(function (item) {
+      var success = false;
+
+      if (item.id === +element.dataset.id) {
+        createPopupBasket(item);
+        success = true;
+      }
+
+      return success;
+    });
+
+    var popup = document.querySelector('.popup');
+    var deleteButton = popup.querySelector('.popup__buttons button:first-of-type');
+    var stayButton = popup.querySelector('.popup__buttons button:last-of-type');
+    var closeButton = popup.querySelector('.popup__quenstion button');
+
+    function closePupup() {
+      popup.remove();
+      popup.removeEventListener('click', onClosePopupBasketOverlayClick);
+      stayButton.removeEventListener('click', onClosePopupBasketClick);
+      closeButton.removeEventListener('keydown', onClosePopupBasketClick);
+      deleteButton.removeEventListener('click', onDeleteItemClick);
+      document.removeEventListener('keydown', onClosePopupBasketKeydown);
+    }
+
+    function onDeleteItemClick() {
+      element.remove();
+
+      deleteItemArray(list, +element.dataset.id);
+      closePupup();
+      addPrices();
+    }
+
+    function onClosePopupBasketKeydown(e) {
+      if (e.keyCode === Escape.KEY_CODE || e.key === Escape.KEY) {
+        closePupup();
+      }
+    }
+
+    function onClosePopupBasketClick() {
+      closePupup();
+    }
+
+    function onClosePopupBasketOverlayClick(e) {
+      if (e.target === popup) {
+        closePupup();
+      }
+    }
+
+    popup.addEventListener('click', onClosePopupBasketOverlayClick);
+    stayButton.addEventListener('click', onClosePopupBasketClick);
+    closeButton.addEventListener('click', onClosePopupBasketClick);
+    deleteButton.addEventListener('click', onDeleteItemClick);
+    document.addEventListener('keydown', onClosePopupBasketKeydown);
   }
 
   function addAmountInBasket(list) {
@@ -84,52 +241,67 @@
   }
 
   function deleteItemArray(list, index) {
-    if (index > -1) {
-      list.splice(index, 1);
-    }
+
+
+    list.some(function (item, i) {
+      var currentIndex = false;
+
+      if (item.id === index) {
+        list.splice(i, 1);
+        currentIndex = true;
+      }
+
+      return currentIndex;
+    });
 
     addAmountInBasket(list);
   }
 
-  function countAmountGuitares() {
+  function countAmountGuitares(item, number) {
 
+    var priceOneThing = item.querySelector('.basket__price span');
+    var fullPrice = item.querySelector('.basket__all-price span');
+
+
+    var price = parseInt(priceOneThing.textContent, 10) * number;
+    fullPrice.innerHTML = price + ' &#8381';
+    addPrices();
   }
 
   function addEventsItem(list) {
-    var items = document.querySelectorAll('.basket li');
-    var allPrices = document.querySelectorAll('.basket__all-price span');
+    var MIN_AMOUNT = 1;
 
-    addPrices(allPrices);
+    var items = document.querySelectorAll('.basket li');
+
+    addPrices();
 
     items.forEach(function (item, i) {
       var closeButton = item.querySelector('.basket__item button');
       var minusButton = item.querySelector('.basket__buttons button:first-of-type');
       var pluseButton = item.querySelector('.basket__buttons button:last-of-type');
       var amouteGuitars = item.querySelector('.basket__buttons div');
-      var priceOneThing = item.querySelector('.basket__price span');
-      var fullPrice = item.querySelector('.basket__all-price span');
-
 
       closeButton.addEventListener('click', function () {
-        item.remove();
-
-        var newAllPrices = document.querySelectorAll('.basket__all-price span');
-        deleteItemArray(list, i);
-        addPrices(newAllPrices, i);
+        openPopupBasket(list, item, i);
       });
 
       minusButton.addEventListener('click', function () {
+        var number = +amouteGuitars.textContent;
 
+        if (number <= MIN_AMOUNT) {
+          openPopupBasket(list, item, i);
+          return;
+        }
+
+        amouteGuitars.textContent = --number;
+        countAmountGuitares(item, number);
       });
 
       pluseButton.addEventListener('click', function () {
-        var newAllPrices = document.querySelectorAll('.basket__all-price span');
-
         var number = +amouteGuitars.textContent;
+
         amouteGuitars.textContent = ++number;
-        var price = parseInt(priceOneThing.textContent, 10) * number;
-        fullPrice.innerHTML = price + ' &#8381';
-        addPrices(newAllPrices);
+        countAmountGuitares(item, number);
       });
     });
   }
@@ -138,29 +310,35 @@
     basketList.innerHTML = '';
     basketList.append(createBasketList(list));
     addEventsItem(list);
-    countAmountGuitares();
   }
 
   window.basket = {
-    renderBasketList: renderBasketList
+    renderBasketList: renderBasketList,
+    addPrices: addPrices
   };
 })();
 
-// toggle
 (function () {
+  var Page = {
+    BASKET: 'basket',
+    CATALOG: 'catalog'
+  };
+
   var main = document.querySelector('.main');
   var mainBasket = document.querySelector('.main_basket');
 
   function toggleMainClick(element) {
     var data = element.dataset.link;
+    var addedGuitars = window.popup.addedGuitars;
+    var renderBasketList = window.basket.renderBasketList;
 
     switch (data) {
-      case 'basket':
+      case Page.BASKET:
         main.setAttribute('hidden', 'hidden');
         mainBasket.removeAttribute('hidden');
-        window.basket.renderBasketList(window.popup.addedGuitars);
+        renderBasketList(addedGuitars);
         break;
-      case 'catalog':
+      case Page.CATALOG:
         mainBasket.setAttribute('hidden', 'hidden');
         main.removeAttribute('hidden');
         break;
@@ -172,28 +350,35 @@
   };
 })();
 
-// disable checkbox
 (function () {
 
-
   function disableCheckbox() {
+    var guitars = [
+      {
+        type: 'акустическая гитара',
+        value: '6,7,12,'
+      },
+      {
+        type: 'укулеле',
+        value: '4,'
+      },
+      {
+        type: 'электрогитара',
+        value: '4,6,7,'
+      },
+    ];
+
     var typeBoxs = document.querySelectorAll('#type-guitars input:checked');
     var stringsBoxs = document.querySelectorAll('#strings-guitars input');
 
     var strings = '';
 
     typeBoxs.forEach(function (type) {
-      if (type.value === 'акустическая гитара') {
-        strings += '6,7,12,';
-      }
-
-      if (type.value === 'укулеле') {
-        strings += '4,';
-      }
-
-      if (type.value === 'электрогитара') {
-        strings += '4,6,7,';
-      }
+      guitars.forEach(function (item) {
+        if (type.value === item.type) {
+          strings += item.value;
+        }
+      });
     });
 
     stringsBoxs.forEach(function (box) {
@@ -223,8 +408,17 @@
   window.disableCheckbox = disableCheckbox;
 })();
 
-// filter
 (function () {
+  var Slicer = {
+    FROM: 0,
+    TO: 3
+  };
+
+  var Checking = {
+    TYPE: 'type',
+    STRINGS: 'strings'
+  };
+
   var filter = document.querySelector('#filter');
 
   function changePrices(list) {
@@ -238,8 +432,8 @@
     var maxPrice = Math.max.apply(null, prices).toString();
     var minPrice = Math.min.apply(null, prices).toString();
 
-    lastPrice.placeholder = maxPrice.substring(maxPrice.length - 3, 0) + ' ' + maxPrice.substring(maxPrice.length - 3);
-    firstPrice.placeholder = minPrice.substring(minPrice.length - 3, 0) + ' ' + minPrice.substring(minPrice.length - 3);
+    lastPrice.placeholder = maxPrice.substring(maxPrice.length - Slicer.TO, Slicer.FROM) + ' ' + maxPrice.substring(maxPrice.length - Slicer.TO);
+    firstPrice.placeholder = minPrice.substring(minPrice.length - Slicer.TO, Slicer.FROM) + ' ' + minPrice.substring(minPrice.length - Slicer.TO);
 
 
     if (+firstPrice.value < +minPrice && firstPrice.value) {
@@ -283,12 +477,11 @@
         var currentItem;
 
         boxs.forEach(function (box) {
-
-          if (box.value === item.type && flag === 'type') {
+          if (box.value === item.type && flag === Checking.TYPE) {
             currentItem = item;
           }
 
-          if (+box.value === item.strings && flag === 'strings') {
+          if (+box.value === item.strings && flag === Checking.STRINGS) {
             currentItem = item;
           }
         });
@@ -315,7 +508,6 @@
   window.filterGuitars = filterGuitars;
 })();
 
-// card
 (function () {
   var card = document.querySelector('#card');
 
@@ -359,8 +551,12 @@
   };
 })();
 
-// active popup
 (function () {
+  var Escape = {
+    KEY_CODE: 'Escape',
+    KEY: 27
+  };
+
   var templateCard = document.querySelector('#add');
 
   if (!templateCard) {
@@ -395,8 +591,8 @@
   }
 
   function onOpenBasketClick(e) {
-    var linkBasket = document.querySelector('.popup__links a:first-of-type');
-    var linkCatalog = document.querySelector('.popup__links a:last-of-type');
+    var linkBasket = document.querySelector('.popup__links a');
+    var stayButton = document.querySelector('.popup__links button');
 
     if (e.currentTarget.dataset) {
       toggleMainClick(e.currentTarget);
@@ -404,7 +600,7 @@
 
     onClosePopupClick();
 
-    linkCatalog.removeEventListener('click', onClosePopupClick);
+    stayButton.removeEventListener('click', onClosePopupClick);
     linkBasket.removeEventListener('click', onOpenBasketClick);
   }
 
@@ -424,7 +620,7 @@
   }
 
   function onClosePopupKeydown(e) {
-    if (e.keyCode === 27 || e.key === 'Escape') {
+    if (e.keyCode === Escape.KEY_CODE || e.key === Escape.KEY) {
       onClosePopupClick();
     }
   }
@@ -435,12 +631,12 @@
 
     var popup = body.querySelector('.popup');
     var closeBtn = popup.querySelector('.popup__quenstion button');
-    var linkBasket = popup.querySelector('.popup__links a:first-of-type');
-    var linkCatalog = popup.querySelector('.popup__links a:last-of-type');
+    var linkBasket = popup.querySelector('.popup__links a');
+    var stayButton = popup.querySelector('.popup__links button');
 
     closeBtn.addEventListener('click', onClosePopupClick);
     popup.addEventListener('click', onClosePopupClick);
-    linkCatalog.addEventListener('click', onClosePopupClick);
+    stayButton.addEventListener('click', onClosePopupClick);
     linkBasket.addEventListener('click', onOpenBasketClick);
     document.addEventListener('keydown', onClosePopupKeydown);
   }
@@ -471,7 +667,9 @@
   }
 
   function openPopup(card, guitars) {
-    var currentGuitar = guitars[+card.dataset.id - 1];
+    var currentGuitar = guitars.find(function (guitar) {
+      return guitar.id === +card.dataset.id;
+    });
 
     body.append(createPopup(currentGuitar));
     body.classList.add('active-popup');
@@ -483,6 +681,7 @@
     var buttons = document.querySelectorAll('.goods__item-buttons button');
 
     buttons.forEach(function (button, i) {
+
       button.addEventListener('click', function () {
         openPopup(cards[i], guitars);
       });
@@ -496,32 +695,29 @@
 
 })();
 
-// main
 (function () {
+  var AMOUNT_CARDS_ON_PAGE = 9;
   var $ = window.jQuery;
   var pages = document.querySelector('.goods__pagination');
-  var filter = document.querySelector('#filter');
-  var linkBasket = document.querySelector('#link-basket');
-  var linkCatalog = document.querySelector('#link-catalog');
+  var header = document.querySelector('.header');
 
-  var toggleMainClick = window.toggle.toggleMainClick;
-
-  if (!pages) {
+  if (!pages || !window.render || !header) {
     return;
   }
 
+  var filter = document.querySelector('#filter');
+  var linkBasket = header.querySelector('#link-basket');
+  var linkCatalog = header.querySelector('#link-catalog');
+
+  var toggleMainClick = window.toggle.toggleMainClick;
   var guitars = JSON.parse(window.server);
   var createList = window.render.createList;
   var filterGuitars = window.filterGuitars;
 
-  if (!pages) {
-    return;
-  }
-
   function renderListGuitars() {
     $('.goods__pagination').pagination({
       dataSource: createList(filterGuitars(guitars)),
-      pageSize: 9,
+      pageSize: AMOUNT_CARDS_ON_PAGE,
       showPrevious: false,
       nextText: 'Далее',
       callback: function (data) {
@@ -553,11 +749,17 @@
   };
 })();
 
-// sort
 (function () {
+  var Sorting = {
+    PRICE: 'price',
+    POPULAR: 'popular',
+    TO_MORE: 'toMore',
+    TO_LESS: 'toLess'
+  };
+
   var sortButtons = document.querySelector('.goods__sort');
 
-  if (!sortButtons) {
+  if (!sortButtons || !window.main) {
     return;
   }
 
@@ -580,25 +782,25 @@
   }
 
   function sortGuitars(list, activeType, activeArrow) {
-    if (activeType === 'price' && !activeArrow || activeType === 'price' && activeArrow === 'toMore') {
+    if (activeType === Sorting.PRICE && !activeArrow || activeType === Sorting.PRICE && activeArrow === Sorting.TO_MORE) {
       list.sort(function (a, b) {
         return a.price - b.price;
       });
     }
 
-    if (activeType === 'price' && activeArrow === 'toLess') {
+    if (activeType === Sorting.PRICE && activeArrow === Sorting.TO_LESS) {
       list.sort(function (a, b) {
         return b.price - a.price;
       });
     }
 
-    if (activeType === 'popular' && !activeArrow || activeType === 'popular' && activeArrow === 'toMore') {
+    if (activeType === Sorting.POPULAR && !activeArrow || activeType === Sorting.POPULAR && activeArrow === Sorting.TO_MORE) {
       list.sort(function (a, b) {
         return a.popular - b.popular;
       });
     }
 
-    if (activeType === 'popular' && activeArrow === 'toLess') {
+    if (activeType === Sorting.POPULAR && activeArrow === Sorting.TO_LESS) {
       list.sort(function (a, b) {
         return b.popular - a.popular;
       });

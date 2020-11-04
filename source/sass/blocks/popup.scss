@@ -160,42 +160,45 @@
   display: flex;
   justify-content: center;
 
-  a {
+  a,
+  button {
     display: block;
     font-weight: 700;
     border-radius: 2px;
     letter-spacing: 0.07em;
 
-    &:first-of-type {
-      padding: 14px 23px;
-      color: $white;
-      border: none;
-      background: $orange;
-      margin-right: 38px;
 
-      &:hover {
-        background: $orange-hover;
-      }
+  }
 
-      &:active {
-        background: $orange-active;
-      }
+  button {
+    padding: 13px 12px;
+    color: $gray-hover;
+    border: 1px solid $gray-hover;
+    background: transparent;
+    margin-right: 25px;
+
+    &:hover {
+      opacity: 0.7;
     }
 
-    &:last-of-type {
-      padding: 13px 12px;
-      color: $gray-hover;
-      border: 1px solid $gray-hover;
-      background: transparent;
-      margin-right: 25px;
+    &:active {
+      opacity: 0.5;
+    }
+  }
 
-      &:hover {
-        opacity: 0.7;
-      }
+  a {
+    padding: 14px 23px;
+    color: $white;
+    border: none;
+    background: $orange;
+    margin-right: 38px;
 
-      &:active {
-        opacity: 0.5;
-      }
+    &:hover {
+      background: $orange-hover;
+    }
+
+    &:active {
+      background: $orange-active;
     }
   }
 }

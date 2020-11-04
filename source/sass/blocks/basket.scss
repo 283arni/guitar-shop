@@ -128,15 +128,6 @@
 .basket__form {
   letter-spacing: 0.07em;
 
-  button {
-    border: none;
-    color: $white;
-    border-radius: 2px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    cursor: pointer;
-  }
-
   form {
     display: flex;
     justify-content: space-between;
@@ -170,6 +161,12 @@
   button {
     background: $gray;
     padding: 9px 18px;
+    border: none;
+    color: $white;
+    border-radius: 2px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    cursor: pointer;
 
     &:hover {
       background: $gray-hover;
@@ -194,9 +191,13 @@
     line-height: 20px;
   }
 
-  button {
+  a {
     background: $orange;
     padding: 9px 35px;
+    font-weight: 700;
+    color: $white;
+    border-radius: 2px;
+    letter-spacing: 0.07em;
 
     &:hover {
       background: $orange-hover;

@@ -40,7 +40,7 @@ gulp.task("fonts-style", function () {
 gulp.task("library", function(){
   return gulp.src([
     'node_modules/jquery/dist/jquery.min.js',
-    'node_modules/paginationjs/dist/pagination.js'
+    'node_modules/paginationjs/dist/pagination.min.js'
   ])
   .pipe(concat('vendor.js'))
   .pipe(gulp.dest('build/js'));

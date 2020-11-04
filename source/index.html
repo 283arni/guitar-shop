@@ -69,9 +69,9 @@
             <div class="filter__item">
               <h2>Цена, &#8381;</h2>
               <div class="filter__item-fields">
-                <input type="number" placeholder="1 000" min="0" value="">
+                <input type="number" placeholder="1 000" min="0" value="" aria-label="Минимальная цена">
                 <div></div>
-                <input type="number" placeholder="10 000" min="0" value="">
+                <input type="number" placeholder="10 000" min="0" value="" aria-label="Максимальная цена">
               </div>
             </div>
             <div class="filter__item">
@@ -101,6 +101,7 @@
           </form>
         </section>
         <section class="goods">
+          <h2 hidden>Товары</h2>
           <div class="goods__sort">
             <div class="goods__buttons-type">
               <span>Сортировать:</span>
@@ -108,8 +109,8 @@
               <button type="button" data-sort="popular">по популярности</button>
             </div>
             <div class="goods__buttons-prices">
-              <button type="button" data-sort="toMore"></button>
-              <button type="button" data-sort="toLess"></button>
+              <button type="button" data-sort="toMore" aria-label="от меньшего к большему"></button>
+              <button type="button" data-sort="toLess" aria-label="от большего к меньшему"></button>
             </div>
           </div>
           <div class="goods__list">
@@ -134,7 +135,7 @@
         </svg>
         <a href="#">Оформляем</a>
       </div>
-      <section class="basket">
+      <div class="basket">
         <ul></ul>
         <div class="basket__form">
           <form>
@@ -148,11 +149,11 @@
             </div>
             <div class="basket__submit">
               <span>Всего: 47 000 &#8381;</span>
-              <button type="submit">Оформить заказ</button>
+              <a href="#">Оформить заказ</a>
             </div>
           </form>
         </div>
-      </section>
+      </div>
     </div>
   </main>
   <footer class="footer">
@@ -342,7 +343,7 @@
         </div>
         <div class="popup__links">
           <a href="#" data-link="basket">Перейти в корзину</a>
-          <a href="#">Продолжить покупки</a>
+          <button type="button">Продолжить покупки</button>
         </div>
       </div>
     </div>
@@ -369,7 +370,7 @@
             <div class="popup__description">
               <h2>Гитара Честер bass</h2>
               <div>Артикул: SO757575</div>
-              <div>Электрогитара, 6 струнная </div>
+              <span>Электрогитара, 6 струнная </span>
               <div>Цена: 17 500 &#8381;</div>
             </div>
           </div>
