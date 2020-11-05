@@ -450,12 +450,11 @@
     lastPrice.placeholder = maxPrice.substring(maxPrice.length - Slicer.TO, Slicer.FROM) + ' ' + maxPrice.substring(maxPrice.length - Slicer.TO);
     firstPrice.placeholder = minPrice.substring(minPrice.length - Slicer.TO, Slicer.FROM) + ' ' + minPrice.substring(minPrice.length - Slicer.TO);
 
-
-    if (+firstPrice.value < +minPrice && firstPrice.value) {
+    if ((+firstPrice.value < +minPrice || firstPrice.value < 0) && firstPrice.value) {
       firstPrice.value = minPrice;
     }
 
-    if (+lastPrice.value > +maxPrice && lastPrice.value) {
+    if ((+lastPrice.value > +maxPrice || +lastPrice.value < 0) && lastPrice.value ) {
       lastPrice.value = maxPrice;
     }
 
