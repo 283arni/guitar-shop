@@ -136,22 +136,22 @@
       }
     }
   }
+}
 
-  &_add {
-    button:first-of-type {
-      margin-top: 11px;
-      padding: 14px 17px;
-      color: $white;
-      border: none;
-      background: $orange;
+.popup__buttons_add {
+  button:first-of-type {
+    margin-top: 11px;
+    padding: 14px 17px;
+    color: $white;
+    border: none;
+    background: $orange;
 
-      &:hover {
-        background: $orange-hover;
-      }
+    &:hover {
+      background: $orange-hover;
+    }
 
-      &:active {
-        background: $orange-active;
-      }
+    &:active {
+      background: $orange-active;
     }
   }
 }
@@ -166,8 +166,6 @@
     font-weight: 700;
     border-radius: 2px;
     letter-spacing: 0.07em;
-
-
   }
 
   button {

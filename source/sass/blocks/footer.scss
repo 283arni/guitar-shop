@@ -94,35 +94,35 @@
   li:not(:last-of-type) {
     margin-bottom: 9px;
   }
+}
 
-  &_contact {
-    letter-spacing: 0.08em;
+.footer__item_contact {
+  letter-spacing: 0.08em;
 
-    address {
-      font-style: normal;
-      font-size: 10px;
-      line-height: 12px;
-    }
+  address {
+    font-style: normal;
+    font-size: 10px;
+    line-height: 12px;
+  }
 
-    a[href^="tel"] {
-      display: block;
-      margin-bottom: 8px;
-      background: no-repeat left center url("../img/phone.png");
-      padding-left: 13px;
-      letter-spacing: 0.1em;
-    }
+  a[href^="tel"] {
+    display: block;
+    margin-bottom: 8px;
+    background: no-repeat left center url("../img/phone.png");
+    padding-left: 13px;
+    letter-spacing: 0.1em;
+  }
 
-    span {
-      font-size: 10px;
-    }
+  span {
+    font-size: 10px;
+  }
 
-    time:first-of-type {
-      padding-left: 15px;
-      background: no-repeat left center url("../img/clock.png");
-    }
+  time:first-of-type {
+    padding-left: 15px;
+    background: no-repeat left center url("../img/clock.png");
+  }
 
-    p {
-      letter-spacing: 0.13em;
-    }
+  p {
+    letter-spacing: 0.13em;
   }
 }
