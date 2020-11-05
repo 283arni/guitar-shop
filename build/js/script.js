@@ -13,7 +13,7 @@
     SALE: 700
   };
 
-  var Promocode = {
+  var Promo = {
     HIT: 'GITARAHIT',
     SUPER: 'SUPERGITARA',
     GUITAR: 'GITARA2020'
@@ -30,7 +30,7 @@
   var price = form.querySelector('.basket__submit span');
 
 
-  function usePromocodeClick(promo) {
+  function usePromoClick(promo) {
     var addPrices = window.basket.addPrices;
     var sum = parseInt(addPrices(), 10);
 
@@ -39,15 +39,15 @@
     }
 
     switch (promo) {
-      case Promocode.HIT:
+      case Promo.HIT:
         price.innerHTML = 'Всего: ' + Math.floor(sum * (Numerator.ONE - Numerator.TEN_PERCENT / Numerator.HUNDRED)) + ' &#8381;';
         field.value = '';
         break;
-      case Promocode.SUPER:
+      case Promo.SUPER:
         price.innerHTML = 'Всего: ' + (sum - Numerator.SALE) + ' &#8381;';
         field.value = '';
         break;
-      case Promocode.GUITAR:
+      case Promo.GUITAR:
         price.innerHTML = 'Всего: ' + Math.floor(sum * Numerator.THIRTY_PERCENT / Numerator.HUNDRED) < Numerator.MAX_SALE ? Math.floor(sum * (Numerator.ONE - Numerator.THIRTY_PERCENT / Numerator.HUNDRED)) : sum - Numerator.MAX_SALE + ' &#8381;';
         field.value = '';
         break;
@@ -68,7 +68,7 @@
   });
 
   button.addEventListener('click', function () {
-    usePromocodeClick(field.value);
+    usePromoClick(field.value);
   });
 })();
 
@@ -204,9 +204,9 @@
     var popup = document.querySelector('.popup');
     var deleteButton = popup.querySelector('.popup__buttons button:first-of-type');
     var stayButton = popup.querySelector('.popup__buttons button:last-of-type');
-    var closeButton = popup.querySelector('.popup__quenstion button');
+    var closeButton = popup.querySelector('.popup__question button');
 
-    function closePupup() {
+    function closePopup() {
       popup.remove();
       popup.removeEventListener('click', onClosePopupBasketOverlayClick);
       stayButton.removeEventListener('click', onClosePopupBasketClick);
@@ -219,23 +219,23 @@
       element.remove();
 
       deleteItemArray(list, +element.dataset.id);
-      closePupup();
+      closePopup();
       addPrices();
     }
 
     function onClosePopupBasketKeydown(e) {
       if (e.keyCode === Escape.KEY_CODE || e.key === Escape.KEY) {
-        closePupup();
+        closePopup();
       }
     }
 
     function onClosePopupBasketClick() {
-      closePupup();
+      closePopup();
     }
 
     function onClosePopupBasketOverlayClick(e) {
       if (e.target === popup) {
-        closePupup();
+        closePopup();
       }
     }
 
@@ -272,7 +272,7 @@
     addAmountInBasket(list);
   }
 
-  function countAmountGuitares(item, number) {
+  function countAmountGuitars(item, number) {
 
     var priceOneThing = item.querySelector('.basket__price span');
     var fullPrice = item.querySelector('.basket__all-price span');
@@ -293,30 +293,30 @@
     items.forEach(function (item, i) {
       var closeButton = item.querySelector('.basket__item button');
       var minusButton = item.querySelector('.basket__buttons button:first-of-type');
-      var pluseButton = item.querySelector('.basket__buttons button:last-of-type');
-      var amouteGuitars = item.querySelector('.basket__buttons div');
+      var plusButton = item.querySelector('.basket__buttons button:last-of-type');
+      var amountGuitars = item.querySelector('.basket__buttons div');
 
       closeButton.addEventListener('click', function () {
         openPopupBasket(list, item, i);
       });
 
       minusButton.addEventListener('click', function () {
-        var number = +amouteGuitars.textContent;
+        var number = +amountGuitars.textContent;
 
         if (number <= MIN_AMOUNT) {
           openPopupBasket(list, item, i);
           return;
         }
 
-        amouteGuitars.textContent = --number;
-        countAmountGuitares(item, number);
+        amountGuitars.textContent = --number;
+        countAmountGuitars(item, number);
       });
 
-      pluseButton.addEventListener('click', function () {
-        var number = +amouteGuitars.textContent;
+      plusButton.addEventListener('click', function () {
+        var number = +amountGuitars.textContent;
 
-        amouteGuitars.textContent = ++number;
-        countAmountGuitares(item, number);
+        amountGuitars.textContent = ++number;
+        countAmountGuitars(item, number);
       });
     });
   }
@@ -383,12 +383,12 @@
       },
     ];
 
-    var typeBoxs = document.querySelectorAll('#type-guitars input:checked');
-    var stringsBoxs = document.querySelectorAll('#strings-guitars input');
+    var typeBoxes = document.querySelectorAll('#type-guitars input:checked');
+    var stringsBoxes = document.querySelectorAll('#strings-guitars input');
 
     var strings = '';
 
-    typeBoxs.forEach(function (type) {
+    typeBoxes.forEach(function (type) {
       guitars.forEach(function (item) {
         if (type.value === item.type) {
           strings += item.value;
@@ -396,8 +396,8 @@
       });
     });
 
-    stringsBoxs.forEach(function (box) {
-      if (typeBoxs.length) {
+    stringsBoxes.forEach(function (box) {
+      if (typeBoxes.length) {
         box.disabled = true;
 
       } else {
@@ -405,7 +405,7 @@
       }
     });
 
-    stringsBoxs.forEach(function (box) {
+    stringsBoxes.forEach(function (box) {
       strings.split(',').forEach(function (amountStrings) {
         if (box.value === amountStrings) {
           box.disabled = false;
@@ -485,13 +485,13 @@
     });
   }
 
-  function filterDetail(boxs, list, flag) {
+  function filterDetail(boxes, list, flag) {
 
-    if (boxs.length) {
+    if (boxes.length) {
       return list.filter(function (item) {
         var currentItem;
 
-        boxs.forEach(function (box) {
+        boxes.forEach(function (box) {
           if (box.value === item.type && flag === Checking.TYPE) {
             currentItem = item;
           }
@@ -510,10 +510,10 @@
 
 
   function filterGuitars(list) {
-    var checkedBoxs = filter.querySelectorAll('#type-guitars input[type="checkbox"]:checked');
+    var checkedBoxes = filter.querySelectorAll('#type-guitars input[type="checkbox"]:checked');
     var checkedStrings = filter.querySelectorAll('#strings-guitars input[type="checkbox"]:checked');
     var newList;
-    newList = filterDetail(checkedBoxs, list, 'type');
+    newList = filterDetail(checkedBoxes, list, 'type');
     newList = filterDetail(checkedStrings, newList, 'strings');
     newList = changePrices(newList);
 
@@ -621,7 +621,7 @@
 
   function onClosePopupClick() {
     var popup = body.querySelector('.popup');
-    var closeBtn = popup.querySelector('.popup__quenstion button');
+    var closeBtn = popup.querySelector('.popup__question button');
 
 
     if (popup) {
@@ -645,7 +645,7 @@
     body.classList.add('active-popup');
 
     var popup = body.querySelector('.popup');
-    var closeBtn = popup.querySelector('.popup__quenstion button');
+    var closeBtn = popup.querySelector('.popup__question button');
     var linkBasket = popup.querySelector('.popup__links a');
     var stayButton = popup.querySelector('.popup__links button');
 
@@ -658,7 +658,7 @@
 
   function addEventsPopup(currentGuitar) {
     var popup = document.querySelector('.popup');
-    var closeBtn = popup.querySelector('.popup__quenstion button');
+    var closeBtn = popup.querySelector('.popup__question button');
     var addButton = popup.querySelector('.popup__buttons_add button');
     var indexGoods = document.querySelector('.header__list-icon span');
 
