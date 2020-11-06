@@ -19,8 +19,24 @@
   function createBasketList(list) {
     var fragment = document.createDocumentFragment();
 
+
     list.forEach(function (item) {
-      fragment.append(createBasketCard(item));
+      var amount = 0;
+
+      list.forEach(function (element) {
+        if (element.id === item.id) {
+          amount += 1;
+        }
+      });
+
+      item.amount = amount;
+    });
+
+
+    list.filter(function (item, i) {
+      if (list.indexOf(item) === i) {
+        fragment.append(createBasketCard(item));
+      }
     });
 
     return fragment;

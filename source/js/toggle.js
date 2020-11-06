@@ -8,6 +8,7 @@
 
   var main = document.querySelector('.main');
   var mainBasket = document.querySelector('.main_basket');
+  var amountBasket = document.querySelector('.header__list-icon span');
 
   function toggleMainClick(element) {
     var data = element.dataset.link;
@@ -19,6 +20,7 @@
         main.setAttribute('hidden', 'hidden');
         mainBasket.removeAttribute('hidden');
         renderBasketList(addedGuitars);
+        amountBasket.textContent = addedGuitars.length;
         break;
       case Page.CATALOG:
         mainBasket.setAttribute('hidden', 'hidden');

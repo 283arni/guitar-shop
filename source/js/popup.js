@@ -34,6 +34,7 @@
     var closeBtn = popup.querySelector('.popup__question button');
     var stayButton = popup.querySelector('.popup__links button');
 
+
     closeBtn.addEventListener('click', onClosePopupClick);
 
     popup.addEventListener('click', closePopupOverlayClick);

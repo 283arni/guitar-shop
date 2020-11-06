@@ -19,6 +19,7 @@
   var createList = window.render.createList;
   var filterGuitars = window.filterGuitars;
 
+
   function renderListGuitars() {
     $('.goods__pagination').pagination({
       dataSource: createList(filterGuitars(guitars)),

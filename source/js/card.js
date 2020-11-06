@@ -14,12 +14,14 @@
       this.cardCode = this.cloneCard.querySelector('.basket__description div:first-of-type');
       this.cardInfo = this.cloneCard.querySelector('.basket__description div:last-of-type');
       this.cardPrice = this.cloneCard.querySelector('.basket__price span');
+      this.amountCard = this.cloneCard.querySelector('.basket__buttons div');
       this.cardFullPrice = this.cloneCard.querySelector('.basket__all-price span');
 
       this.cardTitle.textContent = 'ГИТАРА ' + item.name.toUpperCase();
       this.cardCode.textContent = 'Артикул: ' + item.code;
+      this.amountCard.textContent = item.amount;
       this.cardInfo.textContent = item.type + ', ' + item.strings + ' струнная';
-      this.cardFullPrice.innerHTML = breakPrice(item.price) + ' &#8381;';
+      this.cardFullPrice.innerHTML = breakPrice(item.price * item.amount) + ' &#8381;';
 
     } else {
       this.cardSource = this.cloneCard.querySelector('source');

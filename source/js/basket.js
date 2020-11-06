@@ -4,7 +4,7 @@
   if (!window.basketCard) {
     return;
   }
-
+  var body = document.querySelector('body');
   var basketList = document.querySelector('.basket ul');
   var indexGoods = document.querySelector('.header__list-icon span');
 
@@ -30,7 +30,7 @@
 
   function openPopupBasket(list, element) {
     var createPopupBasket = window.basketPopup.createPopupBasket;
-
+    body.classList.add('active-popup');
 
     list.some(function (item) {
       var success = false;
@@ -72,7 +72,6 @@
   }
 
   function deleteItemArray(list, index) {
-
 
     list.some(function (item, i) {
       var currentIndex = false;
@@ -117,19 +116,23 @@
 
       minusButton.addEventListener('click', function () {
         var number = +amountGuitars.textContent;
+        var numberBasket = +indexGoods.textContent;
 
         if (number <= MIN_AMOUNT) {
           openPopupBasket(list, item);
           return;
         }
 
+        indexGoods.textContent = --numberBasket;
         amountGuitars.textContent = --number;
         countAmountGuitars(item, number);
       });
 
       plusButton.addEventListener('click', function () {
         var number = +amountGuitars.textContent;
+        var numberBasket = +indexGoods.textContent;
 
+        indexGoods.textContent = ++numberBasket;
         amountGuitars.textContent = ++number;
         countAmountGuitars(item, number);
       });

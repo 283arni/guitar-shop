@@ -63,6 +63,7 @@ var Slicer = {
     var closeBtn = popup.querySelector('.popup__question button');
     var stayButton = popup.querySelector('.popup__links button');
 
+
     closeBtn.addEventListener('click', onClosePopupClick);
 
     popup.addEventListener('click', closePopupOverlayClick);
@@ -123,12 +124,14 @@ var Slicer = {
       this.cardCode = this.cloneCard.querySelector('.basket__description div:first-of-type');
       this.cardInfo = this.cloneCard.querySelector('.basket__description div:last-of-type');
       this.cardPrice = this.cloneCard.querySelector('.basket__price span');
+      this.amountCard = this.cloneCard.querySelector('.basket__buttons div');
       this.cardFullPrice = this.cloneCard.querySelector('.basket__all-price span');
 
       this.cardTitle.textContent = 'ГИТАРА ' + item.name.toUpperCase();
       this.cardCode.textContent = 'Артикул: ' + item.code;
+      this.amountCard.textContent = item.amount;
       this.cardInfo.textContent = item.type + ', ' + item.strings + ' струнная';
-      this.cardFullPrice.innerHTML = breakPrice(item.price) + ' &#8381;';
+      this.cardFullPrice.innerHTML = breakPrice(item.price * item.amount) + ' &#8381;';
 
     } else {
       this.cardSource = this.cloneCard.querySelector('source');
@@ -252,8 +255,24 @@ var Slicer = {
   function createBasketList(list) {
     var fragment = document.createDocumentFragment();
 
+
     list.forEach(function (item) {
-      fragment.append(createBasketCard(item));
+      var amount = 0;
+
+      list.forEach(function (element) {
+        if (element.id === item.id) {
+          amount += 1;
+        }
+      });
+
+      item.amount = amount;
+    });
+
+
+    list.filter(function (item, i) {
+      if (list.indexOf(item) === i) {
+        fragment.append(createBasketCard(item));
+      }
     });
 
     return fragment;
@@ -271,7 +290,7 @@ var Slicer = {
   if (!window.basketCard) {
     return;
   }
-
+  var body = document.querySelector('body');
   var basketList = document.querySelector('.basket ul');
   var indexGoods = document.querySelector('.header__list-icon span');
 
@@ -297,7 +316,7 @@ var Slicer = {
 
   function openPopupBasket(list, element) {
     var createPopupBasket = window.basketPopup.createPopupBasket;
-
+    body.classList.add('active-popup');
 
     list.some(function (item) {
       var success = false;
@@ -339,7 +358,6 @@ var Slicer = {
   }
 
   function deleteItemArray(list, index) {
-
 
     list.some(function (item, i) {
       var currentIndex = false;
@@ -384,19 +402,23 @@ var Slicer = {
 
       minusButton.addEventListener('click', function () {
         var number = +amountGuitars.textContent;
+        var numberBasket = +indexGoods.textContent;
 
         if (number <= MIN_AMOUNT) {
           openPopupBasket(list, item);
           return;
         }
 
+        indexGoods.textContent = --numberBasket;
         amountGuitars.textContent = --number;
         countAmountGuitars(item, number);
       });
 
       plusButton.addEventListener('click', function () {
         var number = +amountGuitars.textContent;
+        var numberBasket = +indexGoods.textContent;
 
+        indexGoods.textContent = ++numberBasket;
         amountGuitars.textContent = ++number;
         countAmountGuitars(item, number);
       });
@@ -425,6 +447,7 @@ var Slicer = {
 
   var main = document.querySelector('.main');
   var mainBasket = document.querySelector('.main_basket');
+  var amountBasket = document.querySelector('.header__list-icon span');
 
   function toggleMainClick(element) {
     var data = element.dataset.link;
@@ -436,6 +459,7 @@ var Slicer = {
         main.setAttribute('hidden', 'hidden');
         mainBasket.removeAttribute('hidden');
         renderBasketList(addedGuitars);
+        amountBasket.textContent = addedGuitars.length;
         break;
       case Page.CATALOG:
         mainBasket.setAttribute('hidden', 'hidden');
@@ -777,6 +801,7 @@ var Slicer = {
   var guitars = JSON.parse(window.server);
   var createList = window.render.createList;
   var filterGuitars = window.filterGuitars;
+
 
   function renderListGuitars() {
     $('.goods__pagination').pagination({
