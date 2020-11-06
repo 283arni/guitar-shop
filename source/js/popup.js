@@ -6,6 +6,8 @@
     KEY: 'Escape'
   };
 
+  var breakPrice = window.utils.breakPrice;
+
   var Popup = function (template, guitar) {
     this.cloneCard = template.cloneNode(true);
     this.popupSource = this.cloneCard.querySelector('.popup__info source');
@@ -22,7 +24,7 @@
     this.popupTitle.textContent = 'ГИТАРА ' + guitar.name.toUpperCase();
     this.popupCode.textContent = 'Артикул: ' + guitar.code;
     this.popupInfo.textContent = guitar.type + ', ' + guitar.strings + ' струнная';
-    this.popupPrice.innerHTML = 'Цена: ' + guitar.price + ' &#8381;';
+    this.popupPrice.innerHTML = 'Цена: ' + breakPrice(guitar.price) + ' &#8381;';
 
     return this.cloneCard;
   };

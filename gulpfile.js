@@ -48,6 +48,7 @@ gulp.task("library", function(){
 
 gulp.task('js', function(){
   return gulp.src([
+    'source/js/utils.js',
     'source/js/server.js',
     'source/js/popup.js',
     'source/js/card.js',

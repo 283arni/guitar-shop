@@ -17,6 +17,7 @@
   };
 
   var form = document.querySelector('.basket__form');
+  var breakPrice = window.utils.breakPrice;
 
   if (!form) {
     return;
@@ -29,7 +30,9 @@
 
   function usePromoClick(promo) {
     var addPrices = window.basket.addPrices;
-    var sum = parseInt(addPrices(), 10);
+    var nextPrice = addPrices().toString().split(' ').join('');
+
+    var sum = parseInt(nextPrice, 10);
 
     if (!sum) {
       return;
@@ -37,15 +40,15 @@
 
     switch (promo) {
       case Promo.HIT:
-        price.innerHTML = 'Всего: ' + Math.floor(sum * (Numerator.ONE - Numerator.TEN_PERCENT / Numerator.HUNDRED)) + ' &#8381;';
+        price.innerHTML = 'Всего: ' + breakPrice(Math.floor(sum * (Numerator.ONE - Numerator.TEN_PERCENT / Numerator.HUNDRED))) + ' &#8381;';
         field.value = '';
         break;
       case Promo.SUPER:
-        price.innerHTML = 'Всего: ' + (sum - Numerator.SALE) + ' &#8381;';
+        price.innerHTML = 'Всего: ' + breakPrice(sum - Numerator.SALE) + ' &#8381;';
         field.value = '';
         break;
       case Promo.GUITAR:
-        price.innerHTML = 'Всего: ' + Math.floor(sum * Numerator.THIRTY_PERCENT / Numerator.HUNDRED) < Numerator.MAX_SALE ? Math.floor(sum * (Numerator.ONE - Numerator.THIRTY_PERCENT / Numerator.HUNDRED)) : sum - Numerator.MAX_SALE + ' &#8381;';
+        price.innerHTML = 'Всего: ' + breakPrice(Math.floor(sum * Numerator.THIRTY_PERCENT / Numerator.HUNDRED) < Numerator.MAX_SALE ? Math.floor(sum * (Numerator.ONE - Numerator.THIRTY_PERCENT / Numerator.HUNDRED)) : sum - Numerator.MAX_SALE) + ' &#8381;';
         field.value = '';
         break;
       default:

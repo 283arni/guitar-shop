@@ -1,4 +1,5 @@
 'use strict';
+
 (function () {
   if (!window.basketCard) {
     return;
@@ -9,6 +10,7 @@
 
   var createBasketList = window.basketCard.createBasketList;
   var addEventsPopup = window.popupTemplate.addEventsPopup;
+  var breakPrice = window.utils.breakPrice;
 
   function addPrices() {
     var allPrices = document.querySelectorAll('.basket__all-price span');
@@ -17,10 +19,11 @@
     var sum = 0;
 
     allPrices.forEach(function (item) {
-      sum += parseInt(item.textContent, 10);
+      var nextPrice = item.textContent.split(' ').join('');
+      sum += parseInt(nextPrice, 10);
     });
 
-    sumAllPrices.innerHTML = 'Всего: ' + sum + ' &#8381;';
+    sumAllPrices.innerHTML = 'Всего: ' + breakPrice(sum) + ' &#8381;';
 
     return sum;
   }
@@ -86,13 +89,12 @@
   }
 
   function countAmountGuitars(item, number) {
-
     var priceOneThing = item.querySelector('.basket__price span');
     var fullPrice = item.querySelector('.basket__all-price span');
+    var nextPrice = priceOneThing.textContent.split(' ').join('');
 
-
-    var price = parseInt(priceOneThing.textContent, 10) * number;
-    fullPrice.innerHTML = price + ' &#8381';
+    var price = parseInt(nextPrice, 10) * number;
+    fullPrice.innerHTML = breakPrice(price) + ' &#8381';
     addPrices();
   }
 

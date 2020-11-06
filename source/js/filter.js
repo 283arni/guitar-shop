@@ -1,17 +1,13 @@
 'use strict';
 
 (function () {
-  var Slicer = {
-    FROM: 0,
-    TO: 3
-  };
-
   var Checking = {
     TYPE: 'type',
     STRINGS: 'strings'
   };
 
   var filter = document.querySelector('#filter');
+  var breakPrice = window.utils.breakPrice;
 
   function changePrices(list) {
     var firstPrice = filter.querySelector('.filter__item-fields').firstElementChild;
@@ -24,8 +20,8 @@
     var maxPrice = Math.max.apply(null, prices).toString();
     var minPrice = Math.min.apply(null, prices).toString();
 
-    lastPrice.placeholder = maxPrice.substring(maxPrice.length - Slicer.TO, Slicer.FROM) + ' ' + maxPrice.substring(maxPrice.length - Slicer.TO);
-    firstPrice.placeholder = minPrice.substring(minPrice.length - Slicer.TO, Slicer.FROM) + ' ' + minPrice.substring(minPrice.length - Slicer.TO);
+    lastPrice.placeholder = breakPrice(maxPrice);
+    firstPrice.placeholder = breakPrice(minPrice);
 
     if ((+firstPrice.value < +minPrice || firstPrice.value < 0) && firstPrice.value) {
       firstPrice.value = minPrice;

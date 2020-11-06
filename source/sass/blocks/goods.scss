@@ -76,6 +76,7 @@
 
   li {
     width: 220px;
+    max-height: 304px;
     text-align: center;
     padding: 19px 13px;
     border: 1px solid $line;
@@ -118,6 +119,7 @@
 .goods__item-buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   button,
   a {
@@ -126,7 +128,7 @@
     border-radius: 2px;
     font-weight: 700;
     font-size: 12px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     color: $white;
   }
 
@@ -144,8 +146,11 @@
   }
 
   button:last-of-type {
+
     background: $orange;
-    padding: 5px 13px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
 
     &:hover {
       background: $orange-hover;
@@ -153,6 +158,10 @@
 
     &:active {
       background: $orange-active;
+    }
+
+    span {
+      margin-left: 5px;
     }
   }
 }

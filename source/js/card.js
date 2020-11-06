@@ -1,6 +1,9 @@
 'use strict';
 
 (function () {
+  var breakPrice = window.utils.breakPrice;
+
+
   var Card = function (template, item) {
     this.cloneCard = template.content.querySelector('li').cloneNode(true);
 
@@ -16,7 +19,7 @@
       this.cardTitle.textContent = 'ГИТАРА ' + item.name.toUpperCase();
       this.cardCode.textContent = 'Артикул: ' + item.code;
       this.cardInfo.textContent = item.type + ', ' + item.strings + ' струнная';
-      this.cardFullPrice.innerHTML = item.price + ' &#8381;';
+      this.cardFullPrice.innerHTML = breakPrice(item.price) + ' &#8381;';
 
     } else {
       this.cardSource = this.cloneCard.querySelector('source');
@@ -35,7 +38,7 @@
     this.cardImg.src = 'img/' + item.image + '.png';
     this.cardImg.srcset = 'img/' + item.image + '@2x.png 2x';
     this.cardImg.alt = item.type + ', ' + item.strings + ' струнная';
-    this.cardPrice.innerHTML = item.price + ' &#8381;';
+    this.cardPrice.innerHTML = breakPrice(item.price) + ' &#8381;';
 
     return this.cloneCard;
   };
