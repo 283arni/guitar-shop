@@ -11,7 +11,7 @@
 <body>
   <header class="header">
     <div class="header__wrapper container">
-      <a>
+      <a href="#">
         <svg width="67" height="70">
           <use xlink:href="img/sprite_auto.svg#logo-dark"></use>
         </svg>
@@ -60,7 +60,7 @@
         <svg width="16" height="16">
           <use xlink:href="img/sprite_auto.svg#arrow"></use>
         </svg>
-        <a href="#">Каталог</a>
+        <span>Каталог</span>
       </div>
       <div class="main__wrapper">
         <section class="filter">
@@ -78,24 +78,24 @@
               <h2>Тип гитар</h2>
               <div class="filter__item-check" id="type-guitars">
                 <input type="checkbox" name="acoustic" value="акустическая гитара" id="acoustic-guitar">
-                <label for="acoustic-guitar">Акустические гитары</label>
+                <label for="acoustic-guitar"><div tabindex="0"></div>Акустические гитары</label>
                 <input type="checkbox" name="electro" value="электрогитара" id="electro-guitar">
-                <label for="electro-guitar">Электрогитары</label>
+                <label for="electro-guitar"><div tabindex="0"></div>Электрогитары</label>
                 <input type="checkbox" name="ukulele" value="укулеле" id="ukulele">
-                <label for="ukulele">Укулеле</label>
+                <label for="ukulele"><div tabindex="0"></div>Укулеле</label>
               </div>
             </div>
             <div class="filter__item">
               <h2>Количество струн</h2>
               <div class="filter__item-check" id="strings-guitars">
                 <input type="checkbox" name="strings-4" value="4" id="strings-4">
-                <label for="strings-4">4</label>
+                <label for="strings-4"><div tabindex="0"></div>4</label>
                 <input type="checkbox" name="strings-6" value="6" id="strings-6">
-                <label for="strings-6">6</label>
+                <label for="strings-6"><div tabindex="0"></div>6</label>
                 <input type="checkbox" name="strings-7" value="7" id="strings-7">
-                <label for="strings-7">7</label>
+                <label for="strings-7"><div tabindex="0"></div>7</label>
                 <input type="checkbox" name="strings-12" value="12" id="strings-12">
-                <label for="strings-12">12</label>
+                <label for="strings-12"><div tabindex="0"></div>12</label>
               </div>
             </div>
           </form>
@@ -133,7 +133,7 @@
         <svg width="16" height="16">
           <use xlink:href="img/sprite_auto.svg#arrow"></use>
         </svg>
-        <a href="#">Оформляем</a>
+        <span>Оформляем</span>
       </div>
       <div class="basket">
         <ul></ul>
@@ -160,7 +160,7 @@
     <div class="footer__wrapper container">
       <div class="footer__links">
         <div class="footer__logo">
-          <a>
+          <a href="#">
             <svg width="67" height="70">
               <use xlink:href="img/sprite_auto.svg#logo"></use>
             </svg>
@@ -335,15 +335,15 @@
       <div class="popup__wrapper popup__wrapper_success">
         <div class="popup__question">
           <span>Товар успешно добавлен в корзину</span>
-          <button type="button" tabindex="0">
+          <button type="button">
             <svg width="12" height="12">
               <use xlink:href="img/sprite_auto.svg#close"></use>
             </svg>
           </button>
         </div>
         <div class="popup__links">
-          <a href="#" data-link="basket" tabindex="0">Перейти в корзину</a>
-          <button type="button" tabindex="0">Продолжить покупки</button>
+          <a href="#" data-link="basket">Перейти в корзину</a>
+          <button type="button">Продолжить покупки</button>
         </div>
       </div>
     </div>
@@ -354,7 +354,7 @@
       <div class="popup__wrapper">
         <div class="popup__question">
           <span>Удалить этот товар?</span>
-          <button type="button" tabindex="0">
+          <button type="button">
             <svg width="12" height="12">
               <use xlink:href="img/sprite_auto.svg#close"></use>
             </svg>
@@ -374,9 +374,9 @@
               <div>Цена: 17 500 &#8381;</div>
             </div>
           </div>
-          <div class="popup__buttons">
-            <button type="button" tabindex="0">Удалить товар</button>
-            <button type="button" tabindex="0">Продолжить покупки</button>
+          <div class="popup__buttons popup__buttons_delete">
+            <button type="button">Удалить товар</button>
+            <button type="button">Продолжить покупки</button>
           </div>
         </div>
       </div>

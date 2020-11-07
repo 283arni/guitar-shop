@@ -33,11 +33,35 @@
     var body = document.querySelector('body');
     var closeBtn = popup.querySelector('.popup__question button');
     var stayButton = popup.querySelector('.popup__links button');
+    var addButton = popup.querySelector('.popup__buttons_add button');
+    var lastButton = popup.querySelector('.popup__buttons_delete button:last-of-type');
+
+    closeBtn.focus();
+
+
+    loopPopup(stayButton || lastButton || addButton);
 
 
     closeBtn.addEventListener('click', onClosePopupClick);
-
     popup.addEventListener('click', closePopupOverlayClick);
+
+    function loopPopup(element) {
+      element.addEventListener('keydown', function (e) {
+        e.preventDefault();
+
+        if (e.key === 'Tab') {
+          closeBtn.focus();
+        }
+
+        if ((stayButton === element || lastButton === element) && e.key === 'Enter') {
+          closeBtn.click();
+        }
+
+        if (addButton && e.key === 'Enter') {
+          addButton.click();
+        }
+      });
+    }
 
     function onClosePopupClick() {
       if (popup) {

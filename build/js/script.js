@@ -62,11 +62,35 @@ var Slicer = {
     var body = document.querySelector('body');
     var closeBtn = popup.querySelector('.popup__question button');
     var stayButton = popup.querySelector('.popup__links button');
+    var addButton = popup.querySelector('.popup__buttons_add button');
+    var lastButton = popup.querySelector('.popup__buttons_delete button:last-of-type');
+
+    closeBtn.focus();
+
+
+    loopPopup(stayButton || lastButton || addButton);
 
 
     closeBtn.addEventListener('click', onClosePopupClick);
-
     popup.addEventListener('click', closePopupOverlayClick);
+
+    function loopPopup(element) {
+      element.addEventListener('keydown', function (e) {
+        e.preventDefault();
+
+        if (e.key === 'Tab') {
+          closeBtn.focus();
+        }
+
+        if ((stayButton === element || lastButton === element) && e.key === 'Enter') {
+          closeBtn.click();
+        }
+
+        if (addButton && e.key === 'Enter') {
+          addButton.click();
+        }
+      });
+    }
 
     function onClosePopupClick() {
       if (popup) {
@@ -542,6 +566,7 @@ var Slicer = {
   var filter = document.querySelector('#filter');
   var breakPrice = window.utils.breakPrice;
 
+
   function changePrices(list) {
     var firstPrice = filter.querySelector('.filter__item-fields').firstElementChild;
     var lastPrice = filter.querySelector('.filter__item-fields').lastElementChild;
@@ -555,6 +580,9 @@ var Slicer = {
 
     lastPrice.placeholder = breakPrice(maxPrice);
     firstPrice.placeholder = breakPrice(minPrice);
+    firstPrice.setAttribute('max', maxPrice);
+    lastPrice.setAttribute('max', maxPrice);
+
 
     if ((+firstPrice.value < +minPrice || firstPrice.value < 0) && firstPrice.value) {
       firstPrice.value = minPrice;
@@ -784,6 +812,12 @@ var Slicer = {
 'use strict';
 
 (function () {
+
+  var Enter = {
+    KEY: 'Enter',
+    KEY_CODE: 13
+  };
+
   var AMOUNT_CARDS_ON_PAGE = 9;
   var $ = window.jQuery;
   var pages = document.querySelector('.goods__pagination');
@@ -801,6 +835,8 @@ var Slicer = {
   var guitars = JSON.parse(window.server);
   var createList = window.render.createList;
   var filterGuitars = window.filterGuitars;
+  var allCheckboxes = filter.querySelectorAll('label div');
+  var allLabels = filter.querySelectorAll('label');
 
 
   function renderListGuitars() {
@@ -817,6 +853,7 @@ var Slicer = {
     });
   }
 
+
   filter.addEventListener('change', function () {
     window.disableCheckbox();
     renderListGuitars();
@@ -828,6 +865,14 @@ var Slicer = {
 
   linkCatalog.addEventListener('click', function () {
     toggleMainClick(linkCatalog);
+  });
+
+  allCheckboxes.forEach(function (item, i) {
+    item.addEventListener('keydown', function (e) {
+      if (e.key === Enter.KEY || e.keyCode === Enter.KEY_CODE) {
+        allLabels[i].click();
+      }
+    });
   });
 
   renderListGuitars();

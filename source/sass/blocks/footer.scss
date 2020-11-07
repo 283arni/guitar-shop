@@ -1,5 +1,4 @@
 .footer {
-  min-height: 273px;
   background: $dark-gray;
   color: $white;
 
@@ -13,11 +12,21 @@
 .footer__wrapper {
   display: flex;
   justify-content: space-between;
-  padding-top: 60px;
+  padding: 60px 0;
 }
 
 .footer__logo {
   margin-bottom: 53px;
+
+  a {
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
 }
 
 .footer__socials {

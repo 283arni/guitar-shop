@@ -1,6 +1,12 @@
 'use strict';
 
 (function () {
+
+  var Enter = {
+    KEY: 'Enter',
+    KEY_CODE: 13
+  };
+
   var AMOUNT_CARDS_ON_PAGE = 9;
   var $ = window.jQuery;
   var pages = document.querySelector('.goods__pagination');
@@ -18,6 +24,8 @@
   var guitars = JSON.parse(window.server);
   var createList = window.render.createList;
   var filterGuitars = window.filterGuitars;
+  var allCheckboxes = filter.querySelectorAll('label div');
+  var allLabels = filter.querySelectorAll('label');
 
 
   function renderListGuitars() {
@@ -34,6 +42,7 @@
     });
   }
 
+
   filter.addEventListener('change', function () {
     window.disableCheckbox();
     renderListGuitars();
@@ -45,6 +54,14 @@
 
   linkCatalog.addEventListener('click', function () {
     toggleMainClick(linkCatalog);
+  });
+
+  allCheckboxes.forEach(function (item, i) {
+    item.addEventListener('keydown', function (e) {
+      if (e.key === Enter.KEY || e.keyCode === Enter.KEY_CODE) {
+        allLabels[i].click();
+      }
+    });
   });
 
   renderListGuitars();

@@ -9,6 +9,7 @@
   var filter = document.querySelector('#filter');
   var breakPrice = window.utils.breakPrice;
 
+
   function changePrices(list) {
     var firstPrice = filter.querySelector('.filter__item-fields').firstElementChild;
     var lastPrice = filter.querySelector('.filter__item-fields').lastElementChild;
@@ -22,6 +23,9 @@
 
     lastPrice.placeholder = breakPrice(maxPrice);
     firstPrice.placeholder = breakPrice(minPrice);
+    firstPrice.setAttribute('max', maxPrice);
+    lastPrice.setAttribute('max', maxPrice);
+
 
     if ((+firstPrice.value < +minPrice || firstPrice.value < 0) && firstPrice.value) {
       firstPrice.value = minPrice;

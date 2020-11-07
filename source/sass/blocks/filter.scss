@@ -75,15 +75,7 @@
       margin-bottom: 12px;
     }
 
-    &:hover::before {
-      border-color: $gray-hover;
-    }
-
-    &:active::before {
-      border-color: $gray;
-    }
-
-    &::before {
+    div {
       display: inline-block;
       vertical-align: middle;
       width: 24px;
@@ -92,6 +84,14 @@
       border: 1px solid $gray-active;
       border-radius: 2px;
       margin-right: 17px;
+
+      &:hover {
+        border-color: $gray-hover;
+      }
+
+      &:active {
+        border-color: $gray;
+      }
     }
   }
 
@@ -99,7 +99,7 @@
     display: none;
   }
 
-  input:checked + label::before {
+  input:checked + label div {
     background: no-repeat center url("../img/mark.png");
   }
 
@@ -107,7 +107,7 @@
     pointer-events: none;
     color: $disabled;
 
-    &::before {
+    div {
       border: 1px solid $disabled;
       background: $bg-disabled;
     }
