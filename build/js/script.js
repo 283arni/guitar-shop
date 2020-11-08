@@ -30,9 +30,13 @@ var Slicer = {
 'use strict';
 
 (function () {
-  var Escape = {
-    KEY_CODE: 27,
-    KEY: 'Escape'
+  var Button = {
+    ESCAPE_CODE: 27,
+    ESCAPE: 'Escape',
+    ENTER: 'Enter',
+    ENTER_CODE: 13,
+    TAB: 'Tab',
+    TAB_CODE: 9
   };
 
   var breakPrice = window.utils.breakPrice;
@@ -78,15 +82,15 @@ var Slicer = {
       element.addEventListener('keydown', function (e) {
         e.preventDefault();
 
-        if (e.key === 'Tab') {
+        if (e.key === Button.TAB || e.keyCode === Button.TAB_CODE) {
           closeBtn.focus();
         }
 
-        if ((stayButton === element || lastButton === element) && e.key === 'Enter') {
+        if ((stayButton === element || lastButton === element) && e.key === Button.ENTER || (stayButton === element || lastButton === element) && e.keyCode === Button.ENTER_CODE) {
           closeBtn.click();
         }
 
-        if (addButton && e.key === 'Enter') {
+        if (addButton && e.key === Button.ENTER || addButton && e.keyCode === Button.ENTER_CODE) {
           addButton.click();
         }
       });
@@ -114,7 +118,7 @@ var Slicer = {
     }
 
     function onClosePopupKeydown(e) {
-      if (e.keyCode === Escape.KEY_CODE || e.key === Escape.KEY) {
+      if (e.keyCode === Button.ESCAPE_CODE || e.key === Button.ESCAPE) {
         onClosePopupClick();
       }
     }
