@@ -28,13 +28,16 @@
 
 .header__nav {
   margin: 0 44px 5px 0;
-  width: 50%;
+  width: 54.6%;
 
   ul {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  li {
+    margin: 0 20px;
   }
 
   a {
